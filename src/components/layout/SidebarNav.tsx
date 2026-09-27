@@ -1,35 +1,75 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CaregiverIcon, SOSIcon, VoiceIcon, SettingsIcon, CalendarIcon, HeartIcon } from '../common/Icons';
-
+import {
+  CaregiverIcon,
+  SOSIcon,
+  VoiceIcon,
+  SettingsIcon,
+  CalendarIcon,
+  HeartIcon,
+} from '../common/Icons';
+import { useLanguage } from '../../context/LanguageContext';
 export const SidebarNav: React.FC = () => {
+  const { t } = useLanguage();
+
   const navItems = [
-    { to: '/caregiver', label: 'Dashboard', icon: HeartIcon },
-    { to: '/caregiver/patients', label: 'Patients', icon: CaregiverIcon },
-    { to: '/caregiver/alerts', label: 'Alerts & SOS', icon: SOSIcon },
-    { to: '/caregiver/messages', label: 'Messages', icon: VoiceIcon },
-    { to: '/caregiver/analytics', label: 'Care Analytics', icon: CalendarIcon },
-    { to: '/settings', label: 'Settings', icon: SettingsIcon },
+    {
+      to: '/caregiver',
+      label: t('dashboard'),
+      icon: HeartIcon,
+    },
+    {
+      to: '/caregiver/patients',
+      label: t('patients'),
+      icon: CaregiverIcon,
+    },
+    {
+      to: '/caregiver/alerts',
+      label: t('alertsSos'),
+      icon: SOSIcon,
+    },
+    {
+      to: '/caregiver/messages',
+      label: t('messages'),
+      icon: VoiceIcon,
+    },
+    {
+      to: '/caregiver/analytics',
+      label: t('careAnalytics'),
+      icon: CalendarIcon,
+    },
+    {
+      to: '/settings',
+      label: t('settings'),
+      icon: SettingsIcon,
+    },
   ];
 
   return (
     <aside className="w-64 bg-surface border-r border-hairline flex flex-col justify-between min-h-screen p-5 hidden md:flex flex-shrink-0">
       <div>
+        {/* LOGO */}
         <div className="flex items-center gap-3 mb-8 px-2">
           <div className="w-10 h-10 rounded-2xl bg-accent-primary/10 text-accent-primary flex items-center justify-center font-bold text-xl">
             🛡️
           </div>
+
           <div>
-            <h1 className="font-heading font-bold text-xl text-primary leading-tight">HealthGuard</h1>
+            <h1 className="font-heading font-bold text-xl text-primary leading-tight">
+              HealthGuard
+            </h1>
+
             <span className="text-[10px] uppercase font-bold tracking-wider text-accent-secondary bg-accent-secondary/10 px-2 py-0.5 rounded-full">
-              Caregiver Portal
+              {t('caregiver')} {t('portal')}
             </span>
           </div>
         </div>
 
+        {/* NAVIGATION */}
         <nav className="space-y-1.5">
           {navItems.map((item) => {
             const Icon = item.icon;
+
             return (
               <NavLink
                 key={item.to}
@@ -44,6 +84,7 @@ export const SidebarNav: React.FC = () => {
                 }
               >
                 <Icon size={20} />
+
                 <span>{item.label}</span>
               </NavLink>
             );
@@ -51,9 +92,15 @@ export const SidebarNav: React.FC = () => {
         </nav>
       </div>
 
+      {/* SUPPORT */}
       <div className="p-4 rounded-2xl bg-sunken border border-hairline text-xs text-secondary">
-        <p className="font-semibold text-primary mb-1">HealthGuard Support</p>
-        <p>24/7 Monitoring assistance active for linked family members.</p>
+        <p className="font-semibold text-primary mb-1">
+          {t('support')}
+        </p>
+
+        <p>
+          {t('monitoringAssistance')}
+        </p>
       </div>
     </aside>
   );

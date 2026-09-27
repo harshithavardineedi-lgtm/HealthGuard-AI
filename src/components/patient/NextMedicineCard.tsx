@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { MedicineLog } from '../../types';
 import { Button } from '../common/Button';
-import { MedicineIcon, CheckIcon, SafeStatusIcon } from '../common/Icons';
+import {
+  MedicineIcon,
+  CheckIcon,
+  SafeStatusIcon,
+} from '../common/Icons';
 import { useHealth } from '../../context/HealthContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -15,7 +19,106 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
   const [showSkipConfirm, setShowSkipConfirm] = useState(false);
 
   const { markMedicineTaken, skipMedicineDose } = useHealth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  /*
+   * Medicine names are stored internally in English.
+   * These translations only change the displayed name.
+   */
+  const medicineTranslations: Record<
+    string,
+    Record<'en' | 'te' | 'hi', string>
+  > = {
+    amlodipine: {
+      en: 'Amlodipine',
+      te: 'అమ్లోడిపైన్',
+      hi: 'एम्लोडिपिन',
+    },
+
+    metformin: {
+      en: 'Metformin',
+      te: 'మెట్‌ఫార్మిన్',
+      hi: 'मेटफॉर्मिन',
+    },
+
+    'vitamin d3': {
+      en: 'Vitamin D3',
+      te: 'విటమిన్ D3',
+      hi: 'विटामिन D3',
+    },
+
+    paracetamol: {
+      en: 'Paracetamol',
+      te: 'పారాసెటామాల్',
+      hi: 'पैरासिटामोल',
+    },
+
+    acetaminophen: {
+      en: 'Acetaminophen',
+      te: 'అసిటామినోఫెన్',
+      hi: 'एसिटामिनोफेन',
+    },
+
+    aspirin: {
+      en: 'Aspirin',
+      te: 'ఆస్పిరిన్',
+      hi: 'एस्पिरिन',
+    },
+
+    atorvastatin: {
+      en: 'Atorvastatin',
+      te: 'అటోర్వాస్టాటిన్',
+      hi: 'एटोरवास्टेटिन',
+    },
+
+    losartan: {
+      en: 'Losartan',
+      te: 'లోసార్టాన్',
+      hi: 'लोसार्टान',
+    },
+
+    telmisartan: {
+      en: 'Telmisartan',
+      te: 'టెల్మిసార్టాన్',
+      hi: 'टेल्मिसार्टन',
+    },
+
+    omeprazole: {
+      en: 'Omeprazole',
+      te: 'ఒమెప్రజోల్',
+      hi: 'ओमेप्राज़ोल',
+    },
+
+    pantoprazole: {
+      en: 'Pantoprazole',
+      te: 'పాంటోప్రజోల్',
+      hi: 'पैंटोप्राज़ोल',
+    },
+
+    levothyroxine: {
+      en: 'Levothyroxine',
+      te: 'లెవోథైరాక్సిన్',
+      hi: 'लेवोथायरोक्सिन',
+    },
+
+    insulin: {
+      en: 'Insulin',
+      te: 'ఇన్సులిన్',
+      hi: 'इंसुलिन',
+    },
+  };
+
+  const translateMedicineName = (medicineName: string): string => {
+    const key = medicineName.trim().toLowerCase();
+
+    const translated = medicineTranslations[key];
+
+    if (!translated) {
+      return medicineName;
+    }
+
+    return translated[language] || translated.en;
+  };
 
   const handleMarkTaken = () => {
     setIsFlipped(true);
@@ -44,11 +147,14 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
         {/* Front Side */}
         <div
           className={`backface-hidden ${
-            isFlipped ? 'pointer-events-none opacity-0' : 'opacity-100'
+            isFlipped
+              ? 'pointer-events-none opacity-0'
+              : 'opacity-100'
           }`}
         >
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
+
               <div className="w-12 h-12 rounded-2xl bg-accent-primary/10 text-accent-primary flex items-center justify-center">
                 <MedicineIcon size={28} />
               </div>
@@ -59,9 +165,10 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
                 </span>
 
                 <h3 className="text-2xl font-heading font-bold text-primary">
-                  {log.medicineName}
+                  {translateMedicineName(log.medicineName)}
                 </h3>
               </div>
+
             </div>
 
             <span className="px-3 py-1 text-xs font-semibold rounded-full bg-sunken text-primary border border-hairline">
@@ -71,34 +178,51 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
 
           {/* Medicine Details */}
           <div className="flex items-center gap-4 mb-6 flex-wrap">
+
             <div className="px-4 py-2 rounded-xl bg-sunken border border-hairline text-sm text-secondary">
-              {t('dose')}: <strong className="text-primary">{log.dosage}</strong>
+              {t('dose')}:{' '}
+              <strong className="text-primary">
+                {log.dosage}
+              </strong>
             </div>
 
             <div className="px-4 py-2 rounded-xl bg-sunken border border-hairline text-sm text-secondary">
               {t('timing')}:{' '}
-              <strong className="text-primary">{t('afterFood')}</strong>
+              <strong className="text-primary">
+                {t('afterFood')}
+              </strong>
             </div>
+
           </div>
 
           {/* Status / Actions */}
           {isTaken ? (
+
             <div className="flex items-center gap-2 p-3 bg-status-safe/10 border border-status-safe/30 rounded-2xl text-status-safe font-medium">
+
               <SafeStatusIcon size={22} />
 
               <span>
                 {t('takenAt')} {log.timestamp || t('scheduledTime')} —{' '}
                 {t('greatJob')}
               </span>
+
             </div>
+
           ) : isSkipped ? (
+
             <div className="flex items-center gap-2 p-3 bg-status-warn/10 border border-status-warn/30 rounded-2xl text-status-warn font-medium">
+
               <span>
                 ⚠️ {t('doseSkipped')}. {t('caregiverNotified')}.
               </span>
+
             </div>
+
           ) : (
+
             <div className="flex flex-col sm:flex-row items-center gap-3">
+
               <Button
                 variant="primary"
                 size="lg"
@@ -118,21 +242,26 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
               >
                 {t('skip')}
               </Button>
+
             </div>
+
           )}
 
           {/* Skip Confirmation */}
           {showSkipConfirm && (
+
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               className="mt-4 p-4 bg-status-warn/10 border border-status-warn/30 rounded-2xl text-sm"
             >
+
               <p className="text-primary font-medium mb-3">
                 {t('skipConfirmation')}
               </p>
 
               <div className="flex items-center gap-2">
+
                 <Button
                   variant="danger"
                   size="sm"
@@ -148,9 +277,13 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
                 >
                   {t('cancel')}
                 </Button>
+
               </div>
+
             </motion.div>
+
           )}
+
         </div>
 
         {/* Back Side */}
@@ -161,6 +294,7 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
               : 'pointer-events-none opacity-0'
           }`}
         >
+
           <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-3">
             <CheckIcon size={36} className="text-white" />
           </div>
@@ -172,7 +306,9 @@ export const NextMedicineCard: React.FC<NextMedicineCardProps> = ({ log }) => {
           <p className="text-sm opacity-90 mt-1">
             {t('loggingHealthAdherence')}
           </p>
+
         </div>
+
       </motion.div>
     </div>
   );

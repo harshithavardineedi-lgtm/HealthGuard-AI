@@ -25,7 +25,106 @@ export const PatientDashboard: React.FC = () => {
     setActiveReminder,
   } = useHealth();
 
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  /*
+   * Medicine names are stored internally in English.
+   * These translations only change what the user sees.
+   */
+  const medicineTranslations: Record<
+    string,
+    Record<'en' | 'te' | 'hi', string>
+  > = {
+    amlodipine: {
+      en: 'Amlodipine',
+      te: 'అమ్లోడిపైన్',
+      hi: 'एम्लोडिपिन',
+    },
+
+    metformin: {
+      en: 'Metformin',
+      te: 'మెట్‌ఫార్మిన్',
+      hi: 'मेटफॉर्मिन',
+    },
+
+    'vitamin d3': {
+      en: 'Vitamin D3',
+      te: 'విటమిన్ D3',
+      hi: 'विटामिन D3',
+    },
+
+    paracetamol: {
+      en: 'Paracetamol',
+      te: 'పారాసెటామాల్',
+      hi: 'पैरासिटामोल',
+    },
+
+    acetaminophen: {
+      en: 'Acetaminophen',
+      te: 'అసిటామినోఫెన్',
+      hi: 'एसिटामिनोफेन',
+    },
+
+    aspirin: {
+      en: 'Aspirin',
+      te: 'ఆస్పిరిన్',
+      hi: 'एस्पिरिन',
+    },
+
+    atorvastatin: {
+      en: 'Atorvastatin',
+      te: 'అటోర్వాస్టాటిన్',
+      hi: 'एटोरवास्टेटिन',
+    },
+
+    losartan: {
+      en: 'Losartan',
+      te: 'లోసార్టాన్',
+      hi: 'लोसार्टान',
+    },
+
+    telmisartan: {
+      en: 'Telmisartan',
+      te: 'టెల్మిసార్టాన్',
+      hi: 'टेल्मिसार्टन',
+    },
+
+    omeprazole: {
+      en: 'Omeprazole',
+      te: 'ఒమెప్రజోల్',
+      hi: 'ओमेप्राज़ोल',
+    },
+
+    pantoprazole: {
+      en: 'Pantoprazole',
+      te: 'పాంటోప్రజోల్',
+      hi: 'पैंटोप्राज़ोल',
+    },
+
+    levothyroxine: {
+      en: 'Levothyroxine',
+      te: 'లెవోథైరాక్సిన్',
+      hi: 'लेवोथायरोक्सिन',
+    },
+
+    insulin: {
+      en: 'Insulin',
+      te: 'ఇన్సులిన్',
+      hi: 'इंसुलिन',
+    },
+  };
+
+  const translateMedicineName = (medicineName: string): string => {
+    const key = medicineName.trim().toLowerCase();
+
+    const translated = medicineTranslations[key];
+
+    if (!translated) {
+      return medicineName;
+    }
+
+    return translated[language] || translated.en;
+  };
 
   const nextMedLog =
     todayLogs.find((log) => log.status === 'pending') ||
@@ -132,7 +231,7 @@ export const PatientDashboard: React.FC = () => {
 
                     <div>
                       <h4 className="font-heading font-bold text-base text-primary">
-                        {log.medicineName}
+                        {translateMedicineName(log.medicineName)}
                       </h4>
 
                       <p className="text-xs text-secondary">

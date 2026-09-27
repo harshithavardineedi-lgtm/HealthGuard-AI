@@ -27,6 +27,105 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
 
   const { language, t } = useLanguage();
 
+  /*
+   * Medicine names are stored internally in English.
+   * These translations only change what is displayed or spoken.
+   */
+  const medicineTranslations: Record<
+    string,
+    Record<'en' | 'te' | 'hi', string>
+  > = {
+    amlodipine: {
+      en: 'Amlodipine',
+      te: 'అమ్లోడిపైన్',
+      hi: 'एम्लोडिपिन',
+    },
+
+    metformin: {
+      en: 'Metformin',
+      te: 'మెట్‌ఫార్మిన్',
+      hi: 'मेटफॉर्मिन',
+    },
+
+    'vitamin d3': {
+      en: 'Vitamin D3',
+      te: 'విటమిన్ D3',
+      hi: 'विटामिन D3',
+    },
+
+    paracetamol: {
+      en: 'Paracetamol',
+      te: 'పారాసెటామాల్',
+      hi: 'पैरासिटामोल',
+    },
+
+    acetaminophen: {
+      en: 'Acetaminophen',
+      te: 'అసిటామినోఫెన్',
+      hi: 'एसिटामिनोफेन',
+    },
+
+    aspirin: {
+      en: 'Aspirin',
+      te: 'ఆస్పిరిన్',
+      hi: 'एस्पिरिन',
+    },
+
+    atorvastatin: {
+      en: 'Atorvastatin',
+      te: 'అటోర్వాస్టాటిన్',
+      hi: 'एटोरवास्टेटिन',
+    },
+
+    losartan: {
+      en: 'Losartan',
+      te: 'లోసార్టాన్',
+      hi: 'लोसार्टान',
+    },
+
+    telmisartan: {
+      en: 'Telmisartan',
+      te: 'టెల్మిసార్టాన్',
+      hi: 'टेल्मिसार्टन',
+    },
+
+    omeprazole: {
+      en: 'Omeprazole',
+      te: 'ఒమెప్రజోల్',
+      hi: 'ओमेप्राज़ोल',
+    },
+
+    pantoprazole: {
+      en: 'Pantoprazole',
+      te: 'పాంటోప్రజోల్',
+      hi: 'पैंटोप्राज़ोल',
+    },
+
+    levothyroxine: {
+      en: 'Levothyroxine',
+      te: 'లెవోథైరాక్సిన్',
+      hi: 'लेवोथायरोक्सिन',
+    },
+
+    insulin: {
+      en: 'Insulin',
+      te: 'ఇన్సులిన్',
+      hi: 'इंसुलिन',
+    },
+  };
+
+  const translateMedicineName = (medicineName: string): string => {
+    const key = medicineName.trim().toLowerCase();
+
+    const translated = medicineTranslations[key];
+
+    if (!translated) {
+      return medicineName;
+    }
+
+    return translated[language] || translated.en;
+  };
+
   const speakText = (text: string) => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -49,15 +148,17 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
     const nextMed = todayLogs.find((l) => l.status === 'pending');
 
     if (nextMed) {
+      const medicineName = translateMedicineName(nextMed.medicineName);
+
       if (language === 'te') {
-        return `మీ తదుపరి మందు ${nextMed.medicineName}, మోతాదు ${nextMed.dosage}. ఇది ${nextMed.scheduledTime} కి తీసుకోవాలి.`;
+        return `మీ తదుపరి మందు ${medicineName}, మోతాదు ${nextMed.dosage}. ఇది ${nextMed.scheduledTime} కి తీసుకోవాలి.`;
       }
 
       if (language === 'hi') {
-        return `आपकी अगली दवा ${nextMed.medicineName} है, जिसकी खुराक ${nextMed.dosage} है। इसे ${nextMed.scheduledTime} बजे लेना है।`;
+        return `आपकी अगली दवा ${medicineName} है, जिसकी खुराक ${nextMed.dosage} है। इसे ${nextMed.scheduledTime} बजे लेना है।`;
       }
 
-      return `Your next medicine is ${nextMed.medicineName}, ${nextMed.dosage}, scheduled for ${nextMed.scheduledTime}.`;
+      return `Your next medicine is ${medicineName}, ${nextMed.dosage}, scheduled for ${nextMed.scheduledTime}.`;
     }
 
     if (language === 'te') {
@@ -168,15 +269,31 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
       'देखभालकर्ता',
     ];
 
-    if (medicineKeywords.some((keyword) => lower.includes(keyword))) {
+    if (
+      medicineKeywords.some((keyword) =>
+        lower.includes(keyword)
+      )
+    ) {
       reply = getNextMedicineResponse();
-    } else if (waterKeywords.some((keyword) => lower.includes(keyword))) {
+    } else if (
+      waterKeywords.some((keyword) =>
+        lower.includes(keyword)
+      )
+    ) {
       addWaterGlass();
       reply = getWaterResponse();
-    } else if (sosKeywords.some((keyword) => lower.includes(keyword))) {
+    } else if (
+      sosKeywords.some((keyword) =>
+        lower.includes(keyword)
+      )
+    ) {
       triggerSOS('voice_trigger');
       reply = getSOSResponse();
-    } else if (caregiverKeywords.some((keyword) => lower.includes(keyword))) {
+    } else if (
+      caregiverKeywords.some((keyword) =>
+        lower.includes(keyword)
+      )
+    ) {
       reply = getCaregiverResponse();
     } else {
       reply = getUnknownResponse(input);
@@ -303,8 +420,11 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
 
   return (
     <div className="bg-surface border border-hairline rounded-[24px] p-5 shadow-xs">
+
       <div className="flex items-center justify-between mb-4">
+
         <div className="flex items-center gap-3">
+
           <motion.button
             animate={
               isListening
@@ -333,6 +453,7 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
           </motion.button>
 
           <div>
+
             <h3 className="font-heading font-semibold text-lg text-primary">
               {t('voiceAssistant')}
             </h3>
@@ -342,7 +463,9 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
                 ? listeningText()
                 : `${tapToSpeakText()} (${exampleText()})`}
             </p>
+
           </div>
+
         </div>
 
         <Button
@@ -352,11 +475,13 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
         >
           {isListening ? t('listening') : t('talk')}
         </Button>
+
       </div>
 
       {/* Transcript & Response Area */}
       {transcript && (
         <div className="p-3 bg-sunken rounded-2xl border border-hairline mb-3 text-sm">
+
           <p className="text-xs font-semibold text-accent-secondary mb-1">
             {youSaidText()}
           </p>
@@ -375,19 +500,24 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
 
           {response && (
             <div className="pt-2 border-t border-hairline flex items-start gap-2">
+
               <span className="text-base">🤖</span>
 
               <p className="text-primary font-medium">
                 {response}
               </p>
+
             </div>
           )}
+
         </div>
       )}
 
       {/* Suggested Quick Intent Buttons */}
       {!isCompact && (
         <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-hairline">
+
+          {/* Next Medicine */}
           <button
             onClick={() =>
               processIntent(
@@ -404,6 +534,7 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
             {t('nextMedicineAction')}
           </button>
 
+          {/* Water */}
           <button
             onClick={() =>
               processIntent(
@@ -420,6 +551,7 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
             {t('drinkWater')}
           </button>
 
+          {/* Caregiver */}
           <button
             onClick={() =>
               processIntent(
@@ -436,6 +568,7 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
             {t('callCaregiver')}
           </button>
 
+          {/* SOS */}
           <button
             onClick={() =>
               processIntent(
@@ -451,8 +584,10 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
             <SOSIcon size={16} />
             {t('sendSOS')}
           </button>
+
         </div>
       )}
+
     </div>
   );
 };
