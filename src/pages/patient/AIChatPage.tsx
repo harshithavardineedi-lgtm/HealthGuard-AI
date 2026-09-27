@@ -3,28 +3,30 @@ import { useHealth } from '../../context/HealthContext';
 import { Header } from '../../components/layout/Header';
 import { BottomNav } from '../../components/layout/BottomNav';
 import { Button } from '../../components/common/Button';
+import { useLanguage } from '../../context/LanguageContext';
 import type { ChatMessage } from '../../types';
 
 export const AIChatPage: React.FC = () => {
   const { waterLog, patient, medicines } = useHealth();
+  const { t } = useLanguage();
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'msg-1',
       sender: 'assistant',
-      text: `Hello ${patient.name}! I am your HealthGuard AI support assistant. I can answer questions about your scheduled medicines, daily hydration goals, caregiver connection status, or emergency controls. How can I help you today?`,
-      timestamp: 'Just now',
+      text: t('chatWelcome').replace('{name}', patient.name),
+      timestamp: t('justNow'),
       suggestedActions: [
-        'What medicines do I take today?',
-        'How much water have I drunk?',
-        'Who is my caregiver?',
-        'How do I trigger an emergency alert?',
+        'chatSuggestMedicines',
+        'chatSuggestWater',
+        'chatSuggestCaregiver',
+        'chatSuggestEmergency',
       ],
     },
   ]);
   const [input, setInput] = useState('');
 
-  const handleSend = (textToSend?: string) => {
+  const handleSend = (textToSend?: string, suggestedAction?: string) => {
     const query = textToSend || input;
     if (!query.trim()) return;
 
@@ -32,7 +34,7 @@ export const AIChatPage: React.FC = () => {
       id: `msg-${Date.now()}`,
       sender: 'user',
       text: query,
-      timestamp: 'Just now',
+      timestamp: t('justNow'),
     };
 
     setMessages((prev) => [...prev, userMsg]);
@@ -43,39 +45,39 @@ export const AIChatPage: React.FC = () => {
       const lower = query.toLowerCase();
       let replyText = '';
 
-      if (lower.includes('medicine') || lower.includes('dose') || lower.includes('tablet')) {
+      if (suggestedAction === 'chatSuggestMedicines' || lower.includes('medicine') || lower.includes('dose') || lower.includes('tablet')) {
         const medList = medicines.map((m) => `${m.name} (${m.dosage}) at ${m.time}`).join('\n• ');
-        replyText = `Here is your current daily medicine schedule:\n• ${medList}\n\nYour current adherence rate is ${patient.adherencePercentage}%.`;
-      } else if (lower.includes('water') || lower.includes('hydration')) {
-        replyText = `You have logged ${waterLog.consumedGlasses} out of your ${waterLog.targetGlasses} target glasses of water today.`;
-      } else if (lower.includes('caregiver') || lower.includes('family')) {
+        replyText = t('chatMedicineSchedule').replace('{medList}', medList).replace('{rate}', String(patient.adherencePercentage));
+      } else if (suggestedAction === 'chatSuggestWater' || lower.includes('water') || lower.includes('hydration')) {
+        replyText = t('chatWaterSummary').replace('{consumed}', String(waterLog.consumedGlasses)).replace('{target}', String(waterLog.targetGlasses));
+      } else if (suggestedAction === 'chatSuggestCaregiver' || lower.includes('caregiver') || lower.includes('family')) {
         replyText = patient.caregiverName
-          ? `Your connected caregiver is ${patient.caregiverName} (${patient.caregiverPhone}). They are receiving your remote health adherence logs.`
-          : 'You do not have a connected caregiver currently. You can connect one from the Caregiver screen.';
-      } else if (lower.includes('sos') || lower.includes('emergency') || lower.includes('help')) {
-        replyText = 'To send an emergency SOS alert immediately, tap the red SOS button at the bottom right of any screen, or say "Send SOS" to the Voice Assistant.';
+          ? t('chatCaregiverConnected').replace('{name}', patient.caregiverName).replace('{phone}', patient.caregiverPhone ?? '')
+          : t('chatNoCaregiver');
+      } else if (suggestedAction === 'chatSuggestEmergency' || lower.includes('sos') || lower.includes('emergency') || lower.includes('help')) {
+        replyText = t('chatEmergencyHelp');
       } else {
-        replyText = 'I am here to assist with your medicines, water tracking, caregiver communication, and emergency controls. Please note I am a support reminder tool and do not provide medical diagnosis or advice.';
+        replyText = t('chatFallbackResponse');
       }
 
       const botMsg: ChatMessage = {
         id: `msg-bot-${Date.now()}`,
         sender: 'assistant',
         text: replyText,
-        timestamp: 'Just now',
+        timestamp: t('justNow'),
       };
       setMessages((prev) => [...prev, botMsg]);
     }, 600);
   };
 
   return (
-    <div className="min-h-screen bg-canvas text-primary pb-28 md:pb-12 flex flex-col">
+    <div className="min-h-screen bg-canvas text-primary pb-28 lg:pb-12 flex flex-col">
       <Header />
 
       <main className="max-w-3xl mx-auto px-4 py-6 w-full flex-1 flex flex-col">
         {/* Persistent Non-Alarming Medical Disclaimer (Section 41) */}
         <div className="p-3 mb-4 rounded-2xl bg-sunken border border-hairline text-xs text-secondary leading-snug">
-          ℹ️ <strong>Medical Disclaimer:</strong> HealthGuard AI is a healthcare support and reminder system. It does not diagnose medical conditions or replace professional medical advice. For emergencies, contact local emergency services immediately.
+          ℹ️ <strong>{t('medicalDisclaimerLabel')}</strong> {t('aiChatDisclaimer')}
         </div>
 
         {/* Chat History Box */}
@@ -92,7 +94,7 @@ export const AIChatPage: React.FC = () => {
                     : 'bg-sunken border border-hairline text-primary rounded-bl-none'
                 }`}
               >
-                <p className="whitespace-pre-line">{m.text}</p>
+                <p className="whitespace-pre-line">{m.id === 'msg-1' ? t('chatWelcome').replace('{name}', patient.name) : m.text}</p>
               </div>
 
               {m.suggestedActions && m.suggestedActions.length > 0 && (
@@ -100,10 +102,10 @@ export const AIChatPage: React.FC = () => {
                   {m.suggestedActions.map((action, i) => (
                     <button
                       key={i}
-                      onClick={() => handleSend(action)}
+                      onClick={() => handleSend(t(action), action)}
                       className="px-3 py-1.5 rounded-xl bg-sunken hover:bg-surface border border-hairline text-xs font-semibold text-primary transition-colors cursor-pointer"
                     >
-                      {action}
+                      {t(action)}
                     </button>
                   ))}
                 </div>
@@ -124,11 +126,11 @@ export const AIChatPage: React.FC = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about medicines, water, or caregiver..."
+            placeholder={t('askAboutHealth')}
             className="flex-1 p-3.5 rounded-2xl bg-surface border border-hairline text-primary text-sm focus:outline-none focus:ring-2 focus:ring-accent-primary/40"
           />
           <Button variant="primary" size="md" type="submit" className="bg-accent-primary">
-            Send
+            {t('sendChatMessage')}
           </Button>
         </form>
       </main>

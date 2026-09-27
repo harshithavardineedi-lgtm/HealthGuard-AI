@@ -32,6 +32,24 @@ const translations: Record<string, Translation> = {
     hi: 'डैशबोर्ड',
   },
 
+  home: {
+    en: 'Home',
+    te: 'హోమ్',
+    hi: 'होम',
+  },
+
+  alerts: {
+    en: 'Alerts',
+    te: 'హెచ్చరికలు',
+    hi: 'अलर्ट',
+  },
+
+  mainNavigation: {
+    en: 'Main navigation',
+    te: 'ప్రధాన నావిగేషన్',
+    hi: 'मुख्य नेविगेशन',
+  },
+
   patients: {
     en: 'Patients',
     te: 'రోగులు',
@@ -60,6 +78,786 @@ const translations: Record<string, Translation> = {
     en: 'Settings',
     te: 'సెట్టింగ్స్',
     hi: 'सेटिंग्स',
+  },
+
+  appSettings: {
+    en: 'App Settings',
+    te: 'యాప్ సెట్టింగ్స్',
+    hi: 'ऐप सेटिंग्स',
+  },
+
+  settingsDescription: {
+    en: 'Preferences, accessibility, theme & legal compliance.',
+    te: 'ప్రాధాన్యతలు, అందుబాటు, థీమ్ మరియు చట్టపరమైన అనుసరణ.',
+    hi: 'प्राथमिकताएँ, सुगम्यता, थीम और कानूनी अनुपालन।',
+  },
+
+  appearanceLocalization: {
+    en: 'Appearance & Localization',
+    te: 'రూపం & భాషా సెట్టింగులు',
+    hi: 'रूप और भाषा सेटिंग',
+  },
+
+  colorTheme: {
+    en: 'Color Theme',
+    te: 'రంగు థీమ్',
+    hi: 'रंग थीम',
+  },
+
+  themeDescription: {
+    en: 'Switch between Light Ivory and Dark Forest Teal palette.',
+    te: 'లైట్ ఐవరీ మరియు డార్క్ ఫారెస్ట్ టీల్ రంగుల మధ్య మారండి.',
+    hi: 'लाइट आइवरी और डार्क फॉरेस्ट टील रंगों के बीच बदलें।',
+  },
+
+  appLanguage: {
+    en: 'App Language',
+    te: 'యాప్ భాష',
+    hi: 'ऐप भाषा',
+  },
+
+  languageDescription: {
+    en: 'Supports English, Telugu, and Hindi surfaces.',
+    te: 'ఇంగ్లీష్, తెలుగు మరియు హిందీ భాషలకు మద్దతు ఉంది.',
+    hi: 'अंग्रेज़ी, तेलुगु और हिंदी भाषाओं का समर्थन करता है।',
+  },
+
+  accessibilityModeControls: {
+    en: 'Accessibility Mode Controls',
+    te: 'అందుబాటు నియంత్రణలు',
+    hi: 'सुगम्यता मोड नियंत्रण',
+  },
+
+  largeFontScale: {
+    en: 'Large Font Scale',
+    te: 'పెద్ద అక్షరాల పరిమాణం',
+    hi: 'बड़ा फ़ॉन्ट आकार',
+  },
+
+  largeFontDescription: {
+    en: 'Enlarge text size & touch targets for easier reading.',
+    te: 'సులభంగా చదవడానికి అక్షరాలు మరియు టచ్ లక్ష్యాలను పెద్దవిగా చేయండి.',
+    hi: 'आसानी से पढ़ने के लिए टेक्स्ट और टच लक्ष्य बड़े करें।',
+  },
+
+  highContrastMode: {
+    en: 'High Contrast Mode',
+    te: 'అధిక వ్యత్యాస మోడ్',
+    hi: 'उच्च कंट्रास्ट मोड',
+  },
+
+  highContrastDescription: {
+    en: 'Strengthen border definitions and status contrast.',
+    te: 'బోర్డర్‌లు మరియు స్థితి రంగుల వ్యత్యాసాన్ని పెంచండి.',
+    hi: 'बॉर्डर और स्थिति रंगों का कंट्रास्ट बढ़ाएँ।',
+  },
+
+  reduceDecorativeMotion: {
+    en: 'Reduce Decorative Motion',
+    te: 'అలంకార కదలికలను తగ్గించండి',
+    hi: 'सजावटी गति कम करें',
+  },
+
+  reduceMotionDescription: {
+    en: 'Disable ambient pulse loops; retain functional state animations.',
+    te: 'అలంకార పల్స్ కదలికలను ఆపి, అవసరమైన స్థితి యానిమేషన్‌లను కొనసాగించండి.',
+    hi: 'सजावटी पल्स गति बंद करें; आवश्यक स्थिति एनिमेशन जारी रखें।',
+  },
+
+  privacyDataPolicy: {
+    en: 'Privacy & Data Policy',
+    te: 'గోప్యత & డేటా విధానం',
+    hi: 'गोपनीयता और डेटा नीति',
+  },
+
+  privacyPermissionsTitle: {
+    en: 'Privacy Policy & Live Permissions',
+    te: 'గోప్యతా విధానం & ప్రత్యక్ష అనుమతులు',
+    hi: 'गोपनीयता नीति और लाइव अनुमतियाँ',
+  },
+
+  managePermissionsDescription: {
+    en: 'Manage location, microphone, and analytics permissions.',
+    te: 'స్థానం, మైక్రోఫోన్ మరియు విశ్లేషణల అనుమతులను నిర్వహించండి.',
+    hi: 'स्थान, माइक्रोफ़ोन और विश्लेषण अनुमतियाँ प्रबंधित करें।',
+  },
+
+  termsDataUseTitle: {
+    en: 'Terms of Service & Data Use',
+    te: 'సేవా నిబంధనలు & డేటా వినియోగం',
+    hi: 'सेवा की शर्तें और डेटा उपयोग',
+  },
+
+  termsDataUseDescription: {
+    en: 'Healthcare support disclaimer and user agreement.',
+    te: 'ఆరోగ్య సహాయ నిరాకరణ మరియు వినియోగదారు ఒప్పందం.',
+    hi: 'स्वास्थ्य सहायता अस्वीकरण और उपयोगकर्ता समझौता।',
+  },
+
+  viewPolicy: {
+    en: 'View Policy',
+    te: 'విధానాన్ని చూడండి',
+    hi: 'नीति देखें',
+  },
+
+  viewTerms: {
+    en: 'View Terms',
+    te: 'నిబంధనలు చూడండి',
+    hi: 'शर्तें देखें',
+  },
+
+  accountControls: {
+    en: 'Account Controls',
+    te: 'ఖాతా నియంత్రణలు',
+    hi: 'खाता नियंत्रण',
+  },
+
+  switchRoleForDemo: {
+    en: 'Switch Role for Demo',
+    te: 'డెమో కోసం పాత్ర మార్చండి',
+    hi: 'डेमो के लिए भूमिका बदलें',
+  },
+
+  toggleTheme: {
+    en: 'Toggle Theme',
+    te: 'థీమ్ మార్చండి',
+    hi: 'थीम बदलें',
+  },
+
+  switchToLightTheme: {
+    en: 'Switch to Light Theme',
+    te: 'లైట్ థీమ్‌కు మారండి',
+    hi: 'लाइट थीम पर जाएँ',
+  },
+
+  switchToDarkTheme: {
+    en: 'Switch to Dark Theme',
+    te: 'డార్క్ థీమ్‌కు మారండి',
+    hi: 'डार्क थीम पर जाएँ',
+  },
+
+  notificationsTitle: {
+    en: 'Notifications',
+    te: 'నోటిఫికేషన్లు',
+    hi: 'सूचनाएँ',
+  },
+
+  markRead: {
+    en: 'Mark read',
+    te: 'చదివినట్లు గుర్తించండి',
+    hi: 'पढ़ा हुआ चिह्नित करें',
+  },
+
+  clear: {
+    en: 'Clear',
+    te: 'తొలగించండి',
+    hi: 'साफ़ करें',
+  },
+
+  noNotificationsYet: {
+    en: 'No notifications yet',
+    te: 'ఇంకా నోటిఫికేషన్లు లేవు',
+    hi: 'अभी तक कोई सूचना नहीं',
+  },
+
+  patientProfileTitle: {
+    en: 'Patient Profile',
+    te: 'రోగి ప్రొఫైల్',
+    hi: 'मरीज प्रोफ़ाइल',
+  },
+
+  manageProfileDescription: {
+    en: 'Manage personal & medical profile details.',
+    te: 'వ్యక్తిగత మరియు వైద్య ప్రొఫైల్ వివరాలను నిర్వహించండి.',
+    hi: 'व्यक्तिगत और चिकित्सा प्रोफ़ाइल विवरण प्रबंधित करें।',
+  },
+
+  emergencyCard: {
+    en: 'Emergency Card',
+    te: 'అత్యవసర కార్డు',
+    hi: 'आपातकालीन कार्ड',
+  },
+
+  profileDetailsUpdated: {
+    en: 'Profile details updated successfully!',
+    te: 'ప్రొఫైల్ వివరాలు విజయవంతంగా నవీకరించబడ్డాయి!',
+    hi: 'प्रोफ़ाइल विवरण सफलतापूर्वक अपडेट किए गए!',
+  },
+
+  fullName: {
+    en: 'Full Name',
+    te: 'పూర్తి పేరు',
+    hi: 'पूरा नाम',
+  },
+
+  mobilePhone: {
+    en: 'Mobile Phone',
+    te: 'మొబైల్ ఫోన్',
+    hi: 'मोबाइल फ़ोन',
+  },
+
+  emergencyPhoneContact: {
+    en: 'Emergency Phone Contact',
+    te: 'అత్యవసర ఫోన్ సంప్రదింపు',
+    hi: 'आपातकालीन फ़ोन संपर्क',
+  },
+
+  knownAllergiesCommaSeparated: {
+    en: 'Known Allergies (comma separated)',
+    te: 'తెలిసిన అలర్జీలు (కామాలతో వేరు చేయండి)',
+    hi: 'ज्ञात एलर्जी (कॉमा से अलग करें)',
+  },
+
+  medicalConditionsNotes: {
+    en: 'Medical Conditions & Notes',
+    te: 'వైద్య పరిస్థితులు & గమనికలు',
+    hi: 'चिकित्सा स्थितियाँ और टिप्पणियाँ',
+  },
+
+  saveProfileChanges: {
+    en: 'Save Profile Changes',
+    te: 'ప్రొఫైల్ మార్పులను సేవ్ చేయండి',
+    hi: 'प्रोफ़ाइल बदलाव सहेजें',
+  },
+
+  emergencyInformationCard: {
+    en: 'Emergency Information Card',
+    te: 'అత్యవసర సమాచార కార్డు',
+    hi: 'आपातकालीन जानकारी कार्ड',
+  },
+
+  firstResponderMedicalDetails: {
+    en: 'Medical details for first responders and emergency personnel',
+    te: 'మొదటి స్పందనదారులు మరియు అత్యవసర సిబ్బందికి వైద్య వివరాలు',
+    hi: 'प्रथम प्रतिक्रियाकर्ताओं और आपातकालीन कर्मियों के लिए चिकित्सा विवरण',
+  },
+
+  patientNameLabel: {
+    en: 'Patient Name',
+    te: 'రోగి పేరు',
+    hi: 'मरीज का नाम',
+  },
+
+  mobile: {
+    en: 'Mobile',
+    te: 'మొబైల్',
+    hi: 'मोबाइल',
+  },
+
+  mobileNumber: {
+    en: 'Mobile Number',
+    te: 'మొబైల్ నంబర్',
+    hi: 'मोबाइल नंबर',
+  },
+
+  primaryEmergencyContact: {
+    en: 'Primary Emergency Contact',
+    te: 'ప్రధాన అత్యవసర సంప్రదింపు',
+    hi: 'प्राथमिक आपातकालीन संपर्क',
+  },
+
+  linkedCaregiver: {
+    en: 'Linked Caregiver',
+    te: 'లింక్ చేసిన సంరక్షకుడు',
+    hi: 'जुड़ा हुआ देखभालकर्ता',
+  },
+
+  medicalAllergies: {
+    en: 'Medical Allergies',
+    te: 'వైద్య అలర్జీలు',
+    hi: 'चिकित्सा एलर्जी',
+  },
+
+  noKnownAllergies: {
+    en: 'No known allergies',
+    te: 'తెలిసిన అలర్జీలు లేవు',
+    hi: 'कोई ज्ञात एलर्जी नहीं',
+  },
+
+  medicalHistoryConditions: {
+    en: 'Medical History & Conditions',
+    te: 'వైద్య చరిత్ర & పరిస్థితులు',
+    hi: 'चिकित्सा इतिहास और स्थितियाँ',
+  },
+
+  emergencyCardCopied: {
+    en: 'Emergency Card Copied to Clipboard!',
+    te: 'అత్యవసర కార్డు క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది!',
+    hi: 'आपातकालीन कार्ड क्लिपबोर्ड पर कॉपी किया गया!',
+  },
+
+  shareEmergencyInformationCard: {
+    en: 'Share Emergency Information Card',
+    te: 'అత్యవసర సమాచార కార్డును పంచుకోండి',
+    hi: 'आपातकालीन जानकारी कार्ड साझा करें',
+  },
+
+  myCaregiver: {
+    en: 'My Caregiver',
+    te: 'నా సంరక్షకుడు',
+    hi: 'मेरे देखभालकर्ता',
+  },
+
+  connectCaregiverDescription: {
+    en: 'Connect your family member or doctor for remote health monitoring.',
+    te: 'రిమోట్ ఆరోగ్య పర్యవేక్షణ కోసం మీ కుటుంబ సభ్యుడు లేదా వైద్యుడిని కనెక్ట్ చేయండి.',
+    hi: 'दूरस्थ स्वास्थ्य निगरानी के लिए अपने परिवार के सदस्य या डॉक्टर को जोड़ें।',
+  },
+
+  connectedCaregiver: {
+    en: 'Connected Caregiver',
+    te: 'కనెక్ట్ అయిన సంరక్షకుడు',
+    hi: 'जुड़ा हुआ देखभालकर्ता',
+  },
+
+  relationshipLabel: {
+    en: 'Relationship',
+    te: 'సంబంధం',
+    hi: 'रिश्ता',
+  },
+
+  monitoringPermissionsActive: {
+    en: 'Monitoring Permissions Active:',
+    te: 'పర్యవేక్షణ అనుమతులు యాక్టివ్‌గా ఉన్నాయి:',
+    hi: 'निगरानी अनुमतियाँ सक्रिय हैं:',
+  },
+
+  dailyMedicineAlerts: {
+    en: 'Daily medicine adherence & skipped dose alerts',
+    te: 'రోజువారీ మందుల పాటింపు మరియు వదిలేసిన మోతాదు హెచ్చరికలు',
+    hi: 'दैनिक दवा पालन और छोड़ी गई खुराक के अलर्ट',
+  },
+
+  liveLocationDuringSos: {
+    en: 'Live location during emergency SOS alerts',
+    te: 'అత్యవసర SOS హెచ్చరికల సమయంలో ప్రత్యక్ష స్థానం',
+    hi: 'आपातकालीन SOS अलर्ट के दौरान लाइव स्थान',
+  },
+
+  hydrationProgressUpdates: {
+    en: 'Hydration progress updates',
+    te: 'నీటి వినియోగ పురోగతి నవీకరణలు',
+    hi: 'जल सेवन प्रगति अपडेट',
+  },
+
+  sendConnectionRequestDescription: {
+    en: 'Send a connection request to link your caregiver.',
+    te: 'మీ సంరక్షకుడిని లింక్ చేయడానికి కనెక్షన్ అభ్యర్థన పంపండి.',
+    hi: 'अपने देखभालकर्ता को जोड़ने के लिए कनेक्शन अनुरोध भेजें।',
+  },
+
+  connectionRequestSent: {
+    en: 'Connection request sent to {name} ({phone})! They can accept it from their Caregiver Dashboard.',
+    te: '{name} ({phone})కు కనెక్షన్ అభ్యర్థన పంపబడింది! వారు తమ సంరక్షకుడి డాష్‌బోర్డ్‌లో అంగీకరించవచ్చు.',
+    hi: '{name} ({phone}) को कनेक्शन अनुरोध भेजा गया! वे इसे अपने देखभालकर्ता डैशबोर्ड से स्वीकार कर सकते हैं।',
+  },
+
+  caregiverFullName: {
+    en: 'Caregiver Full Name',
+    te: 'సంరక్షకుడి పూర్తి పేరు',
+    hi: 'देखभालकर्ता का पूरा नाम',
+  },
+
+  relationshipExamples: {
+    en: 'e.g. Son, Daughter, Doctor',
+    te: 'ఉదా: కుమారుడు, కుమార్తె, వైద్యుడు',
+    hi: 'उदा. बेटा, बेटी, डॉक्टर',
+  },
+
+  sendCaregiverRequest: {
+    en: 'Send Caregiver Request',
+    te: 'సంరక్షకుడి అభ్యర్థన పంపండి',
+    hi: 'देखभालकर्ता अनुरोध भेजें',
+  },
+
+  recentRequests: {
+    en: 'Recent Requests',
+    te: 'ఇటీవలి అభ్యర్థనలు',
+    hi: 'हाल के अनुरोध',
+  },
+
+  requestTo: {
+    en: 'request to',
+    te: 'కు అభ్యర్థన',
+    hi: 'को अनुरोध',
+  },
+
+  accepted: {
+    en: 'Accepted',
+    te: 'ఆమోదించబడింది',
+    hi: 'स्वीकार किया गया',
+  },
+
+  rejected: {
+    en: 'Rejected',
+    te: 'తిరస్కరించబడింది',
+    hi: 'अस्वीकार किया गया',
+  },
+
+  authSubtitle: {
+    en: 'Healthcare Support & Caregiver System',
+    te: 'ఆరోగ్య సహాయం & సంరక్షకుల వ్యవస్థ',
+    hi: 'स्वास्थ्य सहायता और देखभालकर्ता प्रणाली',
+  },
+
+  enterMobileNumber: {
+    en: 'Enter Mobile Number',
+    te: 'మొబైల్ నంబర్ నమోదు చేయండి',
+    hi: 'मोबाइल नंबर दर्ज करें',
+  },
+
+  demoAuthenticationNote: {
+    en: 'Demo authentication active. Use code {code} on the next step.',
+    te: 'డెమో ధృవీకరణ యాక్టివ్‌లో ఉంది. తదుపరి దశలో {code} కోడ్ ఉపయోగించండి.',
+    hi: 'डेमो प्रमाणीकरण सक्रिय है। अगले चरण में {code} कोड का उपयोग करें।',
+  },
+
+  sendVerificationOtp: {
+    en: 'Send Verification OTP',
+    te: 'ధృవీకరణ OTP పంపండి',
+    hi: 'सत्यापन OTP भेजें',
+  },
+
+  enterSixDigitOtp: {
+    en: 'Enter 6-Digit OTP',
+    te: '6 అంకెల OTP నమోదు చేయండి',
+    hi: '6 अंकों का OTP दर्ज करें',
+  },
+
+  changeNumber: {
+    en: 'Change number ({phone})',
+    te: 'నంబర్ మార్చండి ({phone})',
+    hi: 'नंबर बदलें ({phone})',
+  },
+
+  invalidOtp: {
+    en: 'Invalid OTP code. Please enter 123456 for demo.',
+    te: 'చెల్లని OTP కోడ్. డెమో కోసం 123456 నమోదు చేయండి.',
+    hi: 'गलत OTP कोड। डेमो के लिए 123456 दर्ज करें।',
+  },
+
+  verifyContinue: {
+    en: 'Verify & Continue',
+    te: 'ధృవీకరించి కొనసాగించండి',
+    hi: 'सत्यापित करें और जारी रखें',
+  },
+
+  howUseHealthGuard: {
+    en: 'How will you use HealthGuard?',
+    te: 'మీరు HealthGuard‌ను ఎలా ఉపయోగిస్తారు?',
+    hi: 'आप HealthGuard का उपयोग कैसे करेंगे?',
+  },
+
+  selectPrimaryRole: {
+    en: 'Select your primary role for this session',
+    te: 'ఈ సెషన్ కోసం మీ ప్రధాన పాత్రను ఎంచుకోండి',
+    hi: 'इस सत्र के लिए अपनी मुख्य भूमिका चुनें',
+  },
+
+  patientSeniorRole: {
+    en: 'I am a Patient / Senior',
+    te: 'నేను రోగిని / సీనియర్‌ను',
+    hi: 'मैं मरीज / वरिष्ठ नागरिक हूँ',
+  },
+
+  patientRoleDescription: {
+    en: 'Large buttons, easy voice reminders, water tracking, and 1-tap SOS emergency alert.',
+    te: 'పెద్ద బటన్లు, సులభమైన వాయిస్ రిమైండర్లు, నీటి ట్రాకింగ్ మరియు ఒక్క ట్యాప్ SOS అత్యవసర హెచ్చరిక.',
+    hi: 'बड़े बटन, आसान वॉइस रिमाइंडर, पानी ट्रैकिंग और एक-टैप SOS आपातकालीन अलर्ट।',
+  },
+
+  caregiverFamilyRole: {
+    en: 'I am a Caregiver / Family',
+    te: 'నేను సంరక్షకుడిని / కుటుంబ సభ్యుడిని',
+    hi: 'मैं देखभालकर्ता / परिवार का सदस्य हूँ',
+  },
+
+  caregiverRoleDescription: {
+    en: 'Remote monitoring console, missed dose alerts, live location tracking, and care analytics.',
+    te: 'రిమోట్ పర్యవేక్షణ కన్సోల్, మిస్ అయిన మోతాదు హెచ్చరికలు, ప్రత్యక్ష స్థానం ట్రాకింగ్ మరియు సంరక్షణ విశ్లేషణలు.',
+    hi: 'रिमोट मॉनिटरिंग कंसोल, छूटी खुराक के अलर्ट, लाइव लोकेशन ट्रैकिंग और देखभाल विश्लेषण।',
+  },
+
+  voiceHealthAssistant: {
+    en: 'Voice Health Assistant',
+    te: 'వాయిస్ ఆరోగ్య సహాయకుడు',
+    hi: 'वॉइस स्वास्थ्य सहायक',
+  },
+
+  voiceAssistantDescription: {
+    en: 'Speak naturally in Telugu, Hindi, or English to get medicine info, log water, or call help.',
+    te: 'మందుల సమాచారం, నీటి నమోదు లేదా సహాయం కోసం తెలుగు, హిందీ లేదా ఇంగ్లీష్‌లో సహజంగా మాట్లాడండి.',
+    hi: 'दवा की जानकारी, पानी दर्ज करने या सहायता के लिए तेलुगु, हिंदी या अंग्रेज़ी में सहजता से बोलें।',
+  },
+
+  medicalDisclaimerLabel: {
+    en: 'Medical Disclaimer:',
+    te: 'వైద్య నిరాకరణ:',
+    hi: 'चिकित्सा अस्वीकरण:',
+  },
+
+  aiChatDisclaimer: {
+    en: 'HealthGuard AI is a healthcare support and reminder system. It does not diagnose medical conditions or replace professional medical advice. For emergencies, contact local emergency services immediately.',
+    te: 'HealthGuard AI ఆరోగ్య సహాయం మరియు రిమైండర్ వ్యవస్థ. ఇది వైద్య పరిస్థితులను నిర్ధారించదు లేదా నిపుణుల వైద్య సలహాకు ప్రత్యామ్నాయం కాదు. అత్యవసర పరిస్థితుల్లో వెంటనే స్థానిక అత్యవసర సేవలను సంప్రదించండి.',
+    hi: 'HealthGuard AI स्वास्थ्य सहायता और रिमाइंडर प्रणाली है। यह चिकित्सा स्थितियों का निदान नहीं करती और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। आपातकाल में तुरंत स्थानीय आपातकालीन सेवाओं से संपर्क करें।',
+  },
+
+  chatWelcome: {
+    en: 'Hello {name}! I am your HealthGuard AI support assistant. I can answer questions about your scheduled medicines, daily hydration goals, caregiver connection status, or emergency controls. How can I help you today?',
+    te: 'నమస్కారం {name}! నేను మీ HealthGuard AI సహాయకుడిని. మీ మందుల షెడ్యూల్, రోజువారీ నీటి లక్ష్యాలు, సంరక్షకుడి కనెక్షన్ లేదా అత్యవసర నియంత్రణల గురించి సమాధానాలు ఇవ్వగలను. ఈరోజు మీకు ఎలా సహాయం చేయాలి?',
+    hi: 'नमस्ते {name}! मैं आपका HealthGuard AI सहायता सहायक हूँ। मैं आपकी दवा समय-सारणी, दैनिक पानी के लक्ष्य, देखभालकर्ता कनेक्शन या आपातकालीन नियंत्रणों के बारे में मदद कर सकता हूँ। आज मैं आपकी कैसे सहायता करूँ?',
+  },
+
+  chatSuggestMedicines: {
+    en: 'What medicines do I take today?',
+    te: 'आज मुझे कौन सी दवाएँ लेनी हैं?',
+    hi: 'आज मुझे कौन सी दवाएँ लेनी हैं?',
+  },
+
+  chatSuggestWater: {
+    en: 'How much water have I drunk?',
+    te: 'నేను ఎంత నీరు తాగాను?',
+    hi: 'मैंने कितना पानी पिया है?',
+  },
+
+  chatSuggestCaregiver: {
+    en: 'Who is my caregiver?',
+    te: 'నా సంరక్షకుడు ఎవరు?',
+    hi: 'मेरे देखभालकर्ता कौन हैं?',
+  },
+
+  chatSuggestEmergency: {
+    en: 'How do I trigger an emergency alert?',
+    te: 'అత్యవసర హెచ్చరికను ఎలా ప్రారంభించాలి?',
+    hi: 'मैं आपातकालीन अलर्ट कैसे शुरू करूँ?',
+  },
+
+  chatMedicineSchedule: {
+    en: 'Here is your current daily medicine schedule:\n• {medList}\n\nYour current adherence rate is {rate}%.',
+    te: 'మీ ప్రస్తుత రోజువారీ మందుల షెడ్యూల్:\n• {medList}\n\nమీ ప్రస్తుత పాటింపు రేటు {rate}%.',
+    hi: 'आपकी वर्तमान दैनिक दवा समय-सारणी:\n• {medList}\n\nआपकी वर्तमान पालन दर {rate}% है।',
+  },
+
+  chatWaterSummary: {
+    en: 'You have logged {consumed} out of your {target} target glasses of water today.',
+    te: 'ఈరోజు మీ {target} గ్లాసుల లక్ష్యంలో {consumed} గ్లాసుల నీటిని నమోదు చేశారు.',
+    hi: 'आज आपने {target} गिलास के लक्ष्य में से {consumed} गिलास पानी दर्ज किया है।',
+  },
+
+  chatCaregiverConnected: {
+    en: 'Your connected caregiver is {name} ({phone}). They are receiving your remote health adherence logs.',
+    te: 'మీతో కనెక్ట్ అయిన సంరక్షకుడు {name} ({phone}). వారు మీ ఆరోగ్య పాటింపు లాగ్‌లను స్వీకరిస్తున్నారు.',
+    hi: 'आपके जुड़े हुए देखभालकर्ता {name} ({phone}) हैं। उन्हें आपकी स्वास्थ्य पालन लॉग मिल रही हैं।',
+  },
+
+  chatNoCaregiver: {
+    en: 'You do not have a connected caregiver currently. You can connect one from the Caregiver screen.',
+    te: 'ప్రస్తుతం మీకు సంరక్షకుడు కనెక్ట్ కాలేదు. సంరక్షకుడి పేజీ నుండి కనెక్ట్ చేయవచ్చు.',
+    hi: 'अभी आपका कोई देखभालकर्ता जुड़ा नहीं है। आप देखभालकर्ता स्क्रीन से किसी को जोड़ सकते हैं।',
+  },
+
+  chatEmergencyHelp: {
+    en: 'To send an emergency SOS alert immediately, tap the red SOS button at the bottom right of any screen, or say "Send SOS" to the Voice Assistant.',
+    te: 'వెంటనే అత్యవసర SOS హెచ్చరిక పంపడానికి, ఏ స్క్రీన్‌లోనైనా కుడి దిగువన ఉన్న ఎరుపు SOS బటన్‌ను తాకండి లేదా వాయిస్ అసిస్టెంట్‌కు "SOS పంపండి" అని చెప్పండి.',
+    hi: 'तुरंत आपातकालीन SOS अलर्ट भेजने के लिए किसी भी स्क्रीन के नीचे दाईं ओर लाल SOS बटन टैप करें या वॉइस असिस्टेंट से "SOS भेजें" कहें।',
+  },
+
+  chatFallbackResponse: {
+    en: 'I am here to assist with your medicines, water tracking, caregiver communication, and emergency controls. Please note I am a support reminder tool and do not provide medical diagnosis or advice.',
+    te: 'నేను మందులు, నీటి ట్రాకింగ్, సంరక్షకుడితో సంభాషణ మరియు అత్యవసర నియంత్రణల్లో సహాయం చేస్తాను. నేను సహాయక రిమైండర్ సాధనాన్ని మాత్రమే; వైద్య నిర్ధారణ లేదా సలహా ఇవ్వను.',
+    hi: 'मैं दवाओं, पानी ट्रैकिंग, देखभालकर्ता से संपर्क और आपातकालीन नियंत्रणों में सहायता करता हूँ। ध्यान दें कि मैं केवल सहायता रिमाइंडर टूल हूँ और चिकित्सा निदान या सलाह नहीं देता।',
+  },
+
+  askAboutHealth: {
+    en: 'Ask about medicines, water, or caregiver...',
+    te: 'మందులు, నీరు లేదా సంరక్షకుడి గురించి అడగండి...',
+    hi: 'दवाओं, पानी या देखभालकर्ता के बारे में पूछें...',
+  },
+
+  sendChatMessage: {
+    en: 'Send',
+    te: 'పంపండి',
+    hi: 'भेजें',
+  },
+
+  privacyPageTitle: {
+    en: 'Privacy Policy & Permissions',
+    te: 'గోప్యతా విధానం & అనుమతులు',
+    hi: 'गोपनीयता नीति और अनुमतियाँ',
+  },
+
+  privacyPageSubtitle: {
+    en: 'HealthGuard AI Privacy Commitments & Device Controls',
+    te: 'HealthGuard AI గోప్యతా హామీలు & పరికర నియంత్రణలు',
+    hi: 'HealthGuard AI की गोपनीयता प्रतिबद्धताएँ और डिवाइस नियंत्रण',
+  },
+
+  backToSettings: {
+    en: 'Back to Settings',
+    te: 'సెట్టింగ్స్‌కు తిరిగి వెళ్లండి',
+    hi: 'सेटिंग्स पर वापस जाएँ',
+  },
+
+  livePermissionControls: {
+    en: 'Live Permission Controls',
+    te: 'ప్రత్యక్ష అనుమతి నియంత్రణలు',
+    hi: 'लाइव अनुमति नियंत्रण',
+  },
+
+  gpsLocationSharing: {
+    en: 'GPS Location Sharing',
+    te: 'GPS స్థానం పంచుకోవడం',
+    hi: 'GPS स्थान साझा करना',
+  },
+
+  shareLocationDuringEmergency: {
+    en: 'Share live location with linked caregiver during Emergency SOS.',
+    te: 'అత్యవసర SOS సమయంలో లింక్ చేసిన సంరక్షకుడితో ప్రత్యక్ష స్థానాన్ని పంచుకోండి.',
+    hi: 'आपातकालीन SOS के दौरान जुड़े देखभालकर्ता के साथ लाइव स्थान साझा करें।',
+  },
+
+  microphoneVoiceRecognition: {
+    en: 'Microphone / Voice Recognition',
+    te: 'మైక్రోఫోన్ / వాయిస్ గుర్తింపు',
+    hi: 'माइक्रोफ़ोन / वॉइस पहचान',
+  },
+
+  allowSpeechAndVoiceNotes: {
+    en: 'Allow Web Speech API & voice note recording.',
+    te: 'Web Speech API మరియు వాయిస్ నోట్ రికార్డింగ్‌ను అనుమతించండి.',
+    hi: 'Web Speech API और वॉइस नोट रिकॉर्डिंग की अनुमति दें।',
+  },
+
+  browserPushNotifications: {
+    en: 'Browser Push Notifications',
+    te: 'బ్రౌజర్ పుష్ నోటిఫికేషన్లు',
+    hi: 'ब्राउज़र पुश सूचनाएँ',
+  },
+
+  receiveMedicineCaregiverAlerts: {
+    en: 'Receive medicine reminders and caregiver alert popups.',
+    te: 'మందుల రిమైండర్లు మరియు సంరక్షకుడి హెచ్చరికలను స్వీకరించండి.',
+    hi: 'दवा रिमाइंडर और देखभालकर्ता अलर्ट पॉपअप प्राप्त करें।',
+  },
+
+  anonymousHealthAnalytics: {
+    en: 'Anonymous Health Analytics',
+    te: 'అనామక ఆరోగ్య విశ్లేషణలు',
+    hi: 'गुमनाम स्वास्थ्य विश्लेषण',
+  },
+
+  shareAdherenceForImprovement: {
+    en: 'Share adherence stats for care improvement.',
+    te: 'సంరక్షణ మెరుగుదల కోసం పాటింపు గణాంకాలను పంచుకోండి.',
+    hi: 'देखभाल में सुधार के लिए पालन आँकड़े साझा करें।',
+  },
+
+  dataProtectionPrivacyPolicy: {
+    en: 'Data Protection & Privacy Policy',
+    te: 'డేటా రక్షణ & గోప్యతా విధానం',
+    hi: 'डेटा सुरक्षा और गोपनीयता नीति',
+  },
+
+  privacyIntro: {
+    en: 'HealthGuard AI values your privacy and the confidentiality of personal health information. All medicine schedules, logs, and emergency contacts are encrypted locally on your device.',
+    te: 'HealthGuard AI మీ గోప్యతను మరియు వ్యక్తిగత ఆరోగ్య సమాచార గోప్యతను గౌరవిస్తుంది. మందుల షెడ్యూల్‌లు, లాగ్‌లు మరియు అత్యవసర సంప్రదింపులు మీ పరికరంలో స్థానికంగా ఎన్‌క్రిప్ట్ చేయబడతాయి.',
+    hi: 'HealthGuard AI आपकी गोपनीयता और व्यक्तिगत स्वास्थ्य जानकारी की गोपनीयता का सम्मान करता है। दवा समय-सारणी, लॉग और आपातकालीन संपर्क आपके डिवाइस पर स्थानीय रूप से एन्क्रिप्ट किए जाते हैं।',
+  },
+
+  howWeUseData: {
+    en: '1. How We Use Data',
+    te: '1. మేము డేటాను ఎలా ఉపయోగిస్తాము',
+    hi: '1. हम डेटा का उपयोग कैसे करते हैं',
+  },
+
+  healthDataSharingPolicy: {
+    en: 'Your health adherence data is shared solely with your explicitly linked caregiver (e.g. family members or designated doctors). We never sell or share patient data with third-party advertisers.',
+    te: 'మీ ఆరోగ్య పాటింపు డేటా మీరు స్పష్టంగా లింక్ చేసిన సంరక్షకుడితో మాత్రమే పంచుకోబడుతుంది (ఉదా. కుటుంబ సభ్యులు లేదా నియమిత వైద్యులు). రోగి డేటాను మూడవ పక్ష ప్రకటనదారులకు ఎప్పుడూ విక్రయించము లేదా పంచుకోము.',
+    hi: 'आपका स्वास्थ्य पालन डेटा केवल आपके स्पष्ट रूप से जुड़े देखभालकर्ता (जैसे परिवार के सदस्य या नियुक्त डॉक्टर) के साथ साझा किया जाता है। हम मरीज का डेटा तीसरे पक्ष के विज्ञापनदाताओं को कभी नहीं बेचते या साझा नहीं करते।',
+  },
+
+  emergencyLocationAccess: {
+    en: '2. Emergency Location Access',
+    te: '2. అత్యవసర స్థానం యాక్సెస్',
+    hi: '2. आपातकालीन स्थान पहुँच',
+  },
+
+  emergencyLocationPolicy: {
+    en: 'Location data is accessed strictly when an Emergency SOS or Fall Simulation is activated to assist first responders and family members in locating you.',
+    te: 'మీ స్థానాన్ని మొదటి స్పందనదారులు మరియు కుటుంబ సభ్యులు గుర్తించడంలో సహాయపడటానికి అత్యవసర SOS లేదా పడిపోవడం సిమ్యులేషన్ ప్రారంభించినప్పుడు మాత్రమే స్థాన డేటాను యాక్సెస్ చేస్తాము.',
+    hi: 'प्रथम प्रतिक्रियाकर्ताओं और परिवार को आपका स्थान ढूँढने में मदद करने के लिए, स्थान डेटा केवल आपातकालीन SOS या गिरने का सिम्युलेशन सक्रिय होने पर ही लिया जाता है।',
+  },
+
+  termsPageTitle: {
+    en: 'Terms of Service & Data Use',
+    te: 'సేవా నిబంధనలు & డేటా వినియోగం',
+    hi: 'सेवा की शर्तें और डेटा उपयोग',
+  },
+
+  termsPageSubtitle: {
+    en: 'Legal Agreement & Medical Support Disclaimer',
+    te: 'చట్టపరమైన ఒప్పందం & వైద్య సహాయ నిరాకరణ',
+    hi: 'कानूनी समझौता और चिकित्सा सहायता अस्वीकरण',
+  },
+
+  medicalDisclaimer: {
+    en: 'HealthGuard AI is a healthcare support and reminder system. It does not diagnose medical conditions or replace professional medical advice. For medical emergencies, contact emergency services immediately.',
+    te: 'HealthGuard AI ఆరోగ్య సహాయం మరియు రిమైండర్ వ్యవస్థ. ఇది వైద్య పరిస్థితులను నిర్ధారించదు లేదా నిపుణుల వైద్య సలహాకు ప్రత్యామ్నాయం కాదు. వైద్య అత్యవసర పరిస్థితుల్లో వెంటనే అత్యవసర సేవలను సంప్రదించండి.',
+    hi: 'HealthGuard AI स्वास्थ्य सहायता और रिमाइंडर प्रणाली है। यह चिकित्सा स्थितियों का निदान नहीं करती और पेशेवर चिकित्सा सलाह का विकल्प नहीं है। चिकित्सा आपातकाल में तुरंत आपातकालीन सेवाओं से संपर्क करें।',
+  },
+
+  acceptableUse: {
+    en: '1. Acceptable Use',
+    te: '1. ఆమోదయోగ్యమైన వినియోగం',
+    hi: '1. स्वीकार्य उपयोग',
+  },
+
+  acceptableUseDescription: {
+    en: 'HealthGuard AI is designed to help patients and caregivers track daily prescriptions, hydration, emergency contacts, and remote health updates.',
+    te: 'రోగులు మరియు సంరక్షకులు రోజువారీ మందులు, నీటి వినియోగం, అత్యవసర సంప్రదింపులు మరియు రిమోట్ ఆరోగ్య నవీకరణలను ట్రాక్ చేయడంలో HealthGuard AI సహాయపడుతుంది.',
+    hi: 'HealthGuard AI मरीजों और देखभालकर्ताओं को दैनिक दवाएँ, पानी का सेवन, आपातकालीन संपर्क और दूरस्थ स्वास्थ्य अपडेट ट्रैक करने में मदद करता है।',
+  },
+
+  userResponsibilities: {
+    en: '2. User Responsibilities',
+    te: '2. వినియోగదారు బాధ్యతలు',
+    hi: '2. उपयोगकर्ता की जिम्मेदारियाँ',
+  },
+
+  userResponsibilitiesDescription: {
+    en: 'Users are responsible for maintaining accurate medicine schedules and updating caregiver phone numbers. Automated reminders are delivered via local web APIs.',
+    te: 'ఖచ్చితమైన మందుల షెడ్యూల్‌లను నిర్వహించడం మరియు సంరక్షకుడి ఫోన్ నంబర్‌లను నవీకరించడం వినియోగదారుల బాధ్యత. ఆటోమేటిక్ రిమైండర్లు స్థానిక వెబ్ APIల ద్వారా అందించబడతాయి.',
+    hi: 'सही दवा समय-सारणी बनाए रखना और देखभालकर्ता के फ़ोन नंबर अपडेट करना उपयोगकर्ताओं की जिम्मेदारी है। स्वचालित रिमाइंडर स्थानीय वेब API के माध्यम से दिए जाते हैं।',
+  },
+
+  emergencySosService: {
+    en: '3. Emergency SOS Service',
+    te: '3. అత్యవసర SOS సేవ',
+    hi: '3. आपातकालीन SOS सेवा',
+  },
+
+  emergencySosServiceDescription: {
+    en: 'The SOS panic button triggers notifications to your connected caregiver and resolves your device GPS coordinates. Users must ensure device location permissions remain enabled for emergency features.',
+    te: 'SOS బటన్ మీ కనెక్ట్ అయిన సంరక్షకుడికి నోటిఫికేషన్లు పంపి, మీ పరికరం GPS స్థానాన్ని గుర్తిస్తుంది. అత్యవసర ఫీచర్ల కోసం పరికర స్థాన అనుమతులు ఆన్‌లో ఉండేలా చూసుకోండి.',
+    hi: 'SOS बटन आपके जुड़े देखभालकर्ता को सूचना भेजता है और आपके डिवाइस के GPS निर्देशांक प्राप्त करता है। आपातकालीन सुविधाओं के लिए डिवाइस स्थान अनुमतियाँ चालू रखें।',
+  },
+
+  sosNotificationTitle: {
+    en: '🚨 EMERGENCY SOS ACTIVATED',
+    te: '🚨 అత్యవసర SOS సక్రియం చేయబడింది',
+    hi: '🚨 आपातकालीन SOS सक्रिय किया गया',
+  },
+
+  sosNotificationMessage: {
+    en: 'Emergency alert triggered by {name} ({trigger}). Location shared.',
+    te: '{name} ({trigger}) ద్వారా అత్యవసర హెచ్చరిక ప్రారంభించబడింది. స్థానం పంచుకోబడింది.',
+    hi: '{name} ({trigger}) द्वारा आपातकालीन अलर्ट शुरू किया गया। स्थान साझा किया गया।',
+  },
+
+  sosActivatedVoiceResponse: {
+    en: 'Emergency SOS has been activated. Emergency alert sent to your caregiver!',
+    te: 'అత్యవసర SOS సక్రియం చేయబడింది. మీ సంరక్షకుడికి అత్యవసర హెచ్చరిక పంపబడింది!',
+    hi: 'आपातकालीन SOS सक्रिय कर दिया गया है। आपके देखभालकर्ता को आपातकालीन अलर्ट भेज दिया गया है!',
   },
 
   profile: {
@@ -94,8 +892,38 @@ const translations: Record<string, Translation> = {
 
   sos: {
     en: 'SOS',
-    te: 'SOS',
-    hi: 'SOS',
+    te: 'అత్యవసర సహాయం',
+    hi: 'आपातकालीन सहायता',
+  },
+
+  triggerEmergencySOS: {
+    en: 'Trigger Emergency SOS',
+    te: 'అత్యవసర సహాయాన్ని ప్రారంభించండి',
+    hi: 'आपातकालीन सहायता शुरू करें',
+  },
+
+  emergencyConfirmation: {
+    en: 'Emergency Confirmation',
+    te: 'అత్యవసర నిర్ధారణ',
+    hi: 'आपातकालीन पुष्टि',
+  },
+
+  confirmEmergencyAssistance: {
+    en: 'Are you sure you need emergency assistance? Your location and emergency alert will be sent immediately to your caregiver and local services.',
+    te: 'మీకు అత్యవసర సహాయం అవసరమని ఖచ్చితంగా అనుకుంటున్నారా? మీ స్థానం మరియు అత్యవసర హెచ్చరిక వెంటనే మీ సంరక్షకుడికి మరియు స్థానిక సేవలకు పంపబడతాయి.',
+    hi: 'क्या आपको आपातकालीन सहायता चाहिए? आपका स्थान और आपातकालीन अलर्ट तुरंत आपके देखभालकर्ता और स्थानीय सेवाओं को भेजा जाएगा।',
+  },
+
+  activatingEmergency: {
+    en: 'Activating Emergency...',
+    te: 'అత్యవసర సహాయాన్ని ప్రారంభిస్తోంది...',
+    hi: 'आपातकालीन सहायता शुरू हो रही है...',
+  },
+
+  yesSendSosAlert: {
+    en: 'Yes, Send SOS Alert',
+    te: 'అవును, అత్యవసర హెచ్చరిక పంపండి',
+    hi: 'हाँ, आपातकालीन अलर्ट भेजें',
   },
 
   caregiver: {

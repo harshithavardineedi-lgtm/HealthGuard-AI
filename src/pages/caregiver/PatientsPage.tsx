@@ -4,6 +4,7 @@ import { SidebarNav } from '../../components/layout/SidebarNav';
 import { Header } from '../../components/layout/Header';
 import { PhoneIcon } from '../../components/common/Icons';
 import { useLanguage } from '../../context/LanguageContext';
+import { BottomNav } from '../../components/layout/BottomNav';
 
 export const PatientsPage: React.FC = () => {
   const { patient } = useHealth();
@@ -16,7 +17,7 @@ export const PatientsPage: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
 
-        <main className="max-w-6xl mx-auto px-4 py-6 w-full space-y-6">
+        <main className="max-w-6xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-6">
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary">{t('linkedPatients')}</h2>
             <p className="text-secondary text-sm mt-1">{t('manageProfilesAndEmergencyContacts')}</p>
@@ -57,6 +58,7 @@ export const PatientsPage: React.FC = () => {
           </div>
         </main>
       </div>
+      <BottomNav />
     </div>
   );
 };

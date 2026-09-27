@@ -46,7 +46,7 @@ export const SidebarNav: React.FC = () => {
   ];
 
   return (
-    <aside className="w-64 bg-surface border-r border-hairline flex flex-col justify-between min-h-screen p-5 hidden md:flex flex-shrink-0">
+    <aside className="w-64 bg-surface border-r border-hairline flex flex-col justify-between min-h-screen p-5 hidden lg:flex flex-shrink-0">
       <div>
         {/* LOGO */}
         <div className="flex items-center gap-3 mb-8 px-2">

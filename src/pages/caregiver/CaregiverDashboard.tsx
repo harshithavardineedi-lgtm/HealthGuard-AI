@@ -3,6 +3,7 @@ import { useHealth } from '../../context/HealthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { SidebarNav } from '../../components/layout/SidebarNav';
 import { Header } from '../../components/layout/Header';
+import { BottomNav } from '../../components/layout/BottomNav';
 import { Button } from '../../components/common/Button';
 import {
   SafeStatusIcon,
@@ -245,7 +246,7 @@ export const CaregiverDashboard: React.FC = () => {
 
         <Header />
 
-        <main className="max-w-7xl mx-auto px-4 py-6 w-full space-y-6">
+        <main className="max-w-7xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-6">
 
           {/* =================================================
               ACTIVE EMERGENCY ALERT
@@ -734,6 +735,7 @@ export const CaregiverDashboard: React.FC = () => {
 
         </main>
       </div>
+      <BottomNav />
     </div>
   );
 };

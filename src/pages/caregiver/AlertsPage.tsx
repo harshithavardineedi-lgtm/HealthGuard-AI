@@ -5,6 +5,7 @@ import { Header } from '../../components/layout/Header';
 import { SOSIcon, WarnStatusIcon } from '../../components/common/Icons';
 import { Button } from '../../components/common/Button';
 import { useLanguage } from '../../context/LanguageContext';
+import { BottomNav } from '../../components/layout/BottomNav';
 
 export const AlertsPage: React.FC = () => {
   const { emergencyAlerts, todayLogs, resolveEmergency } = useHealth();
@@ -28,7 +29,7 @@ export const AlertsPage: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
 
-        <main className="max-w-6xl mx-auto px-4 py-6 w-full space-y-6">
+        <main className="max-w-6xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-6">
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary">{t('alertsHeading')}</h2>
             <p className="text-secondary text-sm mt-1">{t('alertsDescription')}</p>
@@ -92,6 +93,7 @@ export const AlertsPage: React.FC = () => {
           </div>
         </main>
       </div>
+      <BottomNav />
     </div>
   );
 };

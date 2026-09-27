@@ -23,7 +23,7 @@ export const SOSButton: React.FC<{ isFloating?: boolean }> = ({ isFloating = tru
   return (
     <>
       {/* Floating or Embedded Container */}
-      <div className={isFloating ? 'fixed bottom-20 right-5 z-40' : 'relative flex justify-center'}>
+      <div className={isFloating ? 'fixed bottom-24 right-4 z-30 lg:bottom-6' : 'relative flex justify-center'}>
         {/* The single allowed radial glow wash behind SOS button (Section 3.4) */}
         <div className="absolute inset-0 rounded-full sos-radial-glow transform scale-150 pointer-events-none" />
 
@@ -41,11 +41,11 @@ export const SOSButton: React.FC<{ isFloating?: boolean }> = ({ isFloating = tru
           }}
           whileTap={{ y: 4, scale: 0.95 }}
           onClick={() => setShowConfirmModal(true)}
-          className="relative group w-20 h-20 md:w-24 md:h-24 rounded-full bg-status-danger text-white flex flex-col items-center justify-center shadow-lg transition-transform focus:outline-none border-4 border-surface cursor-pointer"
+          className="relative group h-20 min-w-20 w-auto px-2 md:h-24 md:min-w-24 rounded-full bg-status-danger text-white flex flex-col items-center justify-center shadow-lg transition-transform focus:outline-none focus-visible:ring-4 focus-visible:ring-status-danger/40 border-4 border-surface cursor-pointer"
           style={{
             boxShadow: '0 8px 24px rgba(193, 59, 44, 0.4), inset 0 -4px 0 rgba(0,0,0,0.25)',
           }}
-          aria-label="Trigger Emergency SOS"
+          aria-label={t('triggerEmergencySOS')}
         >
           <SOSIcon size={32} className="mb-0.5 text-white" />
           <span className="font-heading font-bold text-xs tracking-wider uppercase">{t('sos')}</span>
@@ -73,10 +73,10 @@ export const SOSButton: React.FC<{ isFloating?: boolean }> = ({ isFloating = tru
                 <SOSIcon size={36} />
               </div>
               <h3 className="text-2xl font-heading font-bold text-primary mb-2">
-                Emergency Confirmation
+                {t('emergencyConfirmation')}
               </h3>
               <p className="text-secondary text-base mb-6 leading-relaxed">
-                Are you sure you need emergency assistance? Your location and emergency alert will be sent immediately to your caregiver and local services.
+                {t('confirmEmergencyAssistance')}
               </p>
 
               <div className="flex flex-col gap-3">
@@ -87,7 +87,7 @@ export const SOSButton: React.FC<{ isFloating?: boolean }> = ({ isFloating = tru
                   onClick={handleSOSConfirm}
                   disabled={isActivating}
                 >
-                  {isActivating ? 'Activating Emergency...' : '🚨 Yes, Send SOS Alert'}
+                  {isActivating ? t('activatingEmergency') : `🚨 ${t('yesSendSosAlert')}`}
                 </Button>
                 <Button
                   variant="secondary"
@@ -95,7 +95,7 @@ export const SOSButton: React.FC<{ isFloating?: boolean }> = ({ isFloating = tru
                   fullWidth
                   onClick={() => setShowConfirmModal(false)}
                 >
-                  Cancel
+                  {t('cancel')}
                 </Button>
               </div>
             </motion.div>

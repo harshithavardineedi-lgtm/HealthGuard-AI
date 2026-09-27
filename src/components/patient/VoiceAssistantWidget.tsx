@@ -185,15 +185,7 @@ export const VoiceAssistantWidget: React.FC<{ isCompact?: boolean }> = ({
   };
 
   const getSOSResponse = () => {
-    if (language === 'te') {
-      return 'అత్యవసర SOS సక్రియం చేయబడింది. మీ సంరక్షకుడికి అత్యవసర హెచ్చరిక పంపబడింది!';
-    }
-
-    if (language === 'hi') {
-      return 'आपातकालीन SOS सक्रिय कर दिया गया है। आपके देखभालकर्ता को आपातकालीन अलर्ट भेज दिया गया है!';
-    }
-
-    return 'Emergency SOS has been activated. Emergency alert sent to your caregiver!';
+    return t('sosActivatedVoiceResponse');
   };
 
   const getCaregiverResponse = () => {

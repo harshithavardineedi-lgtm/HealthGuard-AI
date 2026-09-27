@@ -5,6 +5,7 @@ import { Header } from '../../components/layout/Header';
 import { Button } from '../../components/common/Button';
 import { VoiceIcon } from '../../components/common/Icons';
 import { useLanguage } from '../../context/LanguageContext';
+import { BottomNav } from '../../components/layout/BottomNav';
 
 export const MessagesPage: React.FC = () => {
   const { voiceMessages, sendCaregiverTextReply, sendVoiceMessage, patient } = useHealth();
@@ -51,7 +52,7 @@ export const MessagesPage: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
 
-        <main className="max-w-4xl mx-auto px-4 py-6 w-full space-y-6">
+        <main className="max-w-4xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-6">
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary">{t('voiceTextMessages')}</h2>
             <p className="text-secondary text-sm mt-1">{t('exchangeVoiceNotesMessagesWith')} {patient.name}.</p>
@@ -139,6 +140,7 @@ export const MessagesPage: React.FC = () => {
           </div>
         </main>
       </div>
+      <BottomNav />
     </div>
   );
 };

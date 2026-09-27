@@ -23,6 +23,7 @@ import {
   mockEmergencyAlerts,
   mockConnectionRequests,
 } from '../data/mockData';
+import { useLanguage } from './LanguageContext';
 
 interface HealthContextType {
   patient: Patient;
@@ -68,6 +69,8 @@ interface HealthContextType {
 const HealthContext = createContext<HealthContextType | undefined>(undefined);
 
 export const HealthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { t } = useLanguage();
+
   // Load from localStorage or mock defaults
   const [patient, setPatient] = useState<Patient>(() => {
     const saved = localStorage.getItem('hg_patient_data');
@@ -307,6 +310,12 @@ export const HealthProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   };
 
   const triggerSOS = (type: 'sos_button' | 'fall_detection' | 'voice_trigger' = 'sos_button') => {
+    const triggerTranslationKey = type === 'sos_button'
+      ? 'sosButtonTrigger'
+      : type === 'fall_detection'
+      ? 'fallDetectionTrigger'
+      : 'voiceTrigger';
+
     const newAlert: EmergencyAlert = {
       id: `sos-${Date.now()}`,
       patientId: patient.id,
@@ -322,8 +331,10 @@ export const HealthProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
     addNotification({
       type: 'emergency_sos',
-      title: '🚨 EMERGENCY SOS ACTIVATED',
-      message: `Emergency alert triggered by ${patient.name} (${type.replace('_', ' ')}). Location shared.`,
+      title: t('sosNotificationTitle'),
+      message: t('sosNotificationMessage')
+        .replace('{name}', patient.name)
+        .replace('{trigger}', t(triggerTranslationKey)),
     });
   };
 

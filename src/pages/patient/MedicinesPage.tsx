@@ -334,7 +334,7 @@ export const MedicinesPage: React.FC = () => {
   // =====================================================
 
   return (
-    <div className="min-h-screen bg-canvas text-primary pb-28 md:pb-12">
+    <div className="min-h-screen bg-canvas text-primary pb-28 lg:pb-12">
 
       <Header />
 

@@ -3,6 +3,7 @@ import { useHealth } from '../../context/HealthContext';
 import { SidebarNav } from '../../components/layout/SidebarNav';
 import { Header } from '../../components/layout/Header';
 import { useLanguage } from '../../context/LanguageContext';
+import { BottomNav } from '../../components/layout/BottomNav';
 import {
   PieChart,
   Pie,
@@ -58,16 +59,16 @@ export const AnalyticsPage: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
 
-        <main className="max-w-7xl mx-auto px-4 py-6 w-full space-y-6">
+        <main className="max-w-7xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-6">
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary">{t('careAnalyticsTrends')}</h2>
             <p className="text-secondary text-sm mt-1">{t('quantitativeHealthTrackingFor')} {patient.name}.</p>
           </div>
 
           {/* Full Width Chart Bento Layout (Section 3.6 & 28) */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
             {/* Adherence Donut Chart */}
-            <div className="lg:col-span-1 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs flex flex-col justify-between">
+            <div className="xl:col-span-1 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs flex flex-col justify-between">
               <h3 className="font-heading font-bold text-lg text-primary mb-2">{t('doseStatusDistribution')}</h3>
               <p className="text-xs text-secondary mb-4">{t('completedVsMissedDosesToday')}</p>
 
@@ -104,7 +105,7 @@ export const AnalyticsPage: React.FC = () => {
             </div>
 
             {/* Weekly Medicine Activity Bar Chart */}
-            <div className="lg:col-span-2 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs">
+            <div className="xl:col-span-2 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs">
               <h3 className="font-heading font-bold text-lg text-primary mb-2">{t('weeklyMedicineActivity')}</h3>
               <p className="text-xs text-secondary mb-4">{t('dailyTakenSkippedComparison')}</p>
 
@@ -147,6 +148,7 @@ export const AnalyticsPage: React.FC = () => {
           </div>
         </main>
       </div>
+      <BottomNav />
     </div>
   );
 };
