@@ -25,7 +25,6 @@ import { SettingsPage } from './pages/common/SettingsPage';
 import { PrivacyPage } from './pages/common/PrivacyPage';
 import { TermsPage } from './pages/common/TermsPage';
 
-import { DemoPanel } from './components/demo/DemoPanel';
 
 const AppRoutes: React.FC = () => {
   const { isAuthenticated, userRole } = useAuth();
@@ -115,7 +114,6 @@ export function App() {
           <HealthProvider>
             <Router>
               <AppRoutes />
-              <DemoPanel />
             </Router>
           </HealthProvider>
         </AuthProvider>
