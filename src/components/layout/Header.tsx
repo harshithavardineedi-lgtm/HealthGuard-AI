@@ -4,58 +4,102 @@ import { useHealth } from '../../context/HealthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { ThemeToggle } from '../common/ThemeToggle';
 import { LanguageSelector } from '../common/LanguageSelector';
-import { BellIcon, CaregiverIcon, SafeStatusIcon, WarnStatusIcon } from '../common/Icons';
+import {
+  BellIcon,
+  CaregiverIcon,
+  SafeStatusIcon,
+  WarnStatusIcon,
+} from '../common/Icons';
 import { NotificationPanel } from '../common/NotificationPanel';
 
 export const Header: React.FC = () => {
   const { userRole, switchRole } = useAuth();
   const { patient, caregiver, notifications } = useHealth();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [showNotifs, setShowNotifs] = useState(false);
 
   const unreadCount = notifications.filter((n) => !n.read).length;
   const isConnected = !!patient.caregiverId;
 
-  const todayStr = new Date().toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-  });
+  const todayStr = new Date().toLocaleDateString(
+    language === 'te'
+      ? 'te-IN'
+      : language === 'hi'
+      ? 'hi-IN'
+      : 'en-US',
+    {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    }
+  );
+
+  const getRoleText = () => {
+    if (userRole === 'patient') {
+      return `${t('patient')} 👤`;
+    }
+
+    return `${t('caregiver')} 👨‍⚕️`;
+  };
 
   return (
     <header className="sticky top-0 z-30 bg-surface/90 backdrop-blur-md border-b border-hairline px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
         {/* Left: Greeting & Date */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full border-2 border-accent-secondary overflow-hidden bg-sunken flex-shrink-0">
             <img
-              src={userRole === 'patient' ? patient.avatarUrl : caregiver.avatarUrl}
-              alt="User Avatar"
+              src={
+                userRole === 'patient'
+                  ? patient.avatarUrl
+                  : caregiver.avatarUrl
+              }
+              alt={t('profile')}
               className="w-full h-full object-cover"
             />
           </div>
+
           <div>
             <div className="flex items-center gap-2">
               <h2 className="font-heading font-bold text-lg md:text-xl text-primary leading-tight">
-                {t('goodMorning')}, {userRole === 'patient' ? patient.name.split(' ')[0] : caregiver.name.split(' ')[0]} 👋
+                {t('goodMorning')},{' '}
+                {userRole === 'patient'
+                  ? patient.name.split(' ')[0]
+                  : caregiver.name.split(' ')[0]}{' '}
+                👋
               </h2>
             </div>
-            <p className="text-xs text-secondary font-medium">{todayStr}</p>
+
+            <p className="text-xs text-secondary font-medium">
+              {todayStr}
+            </p>
           </div>
         </div>
 
-        {/* Center: Caregiver Connection Status Chip (Patient Mode) */}
+        {/* Center: Caregiver Connection Status Chip */}
         {userRole === 'patient' && (
           <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-sunken border border-hairline text-xs">
-            <CaregiverIcon size={16} className="text-accent-primary" />
-            <span className="text-secondary font-medium">Caregiver:</span>
+            <CaregiverIcon
+              size={16}
+              className="text-accent-primary"
+            />
+
+            <span className="text-secondary font-medium">
+              {t('caregiver')}:
+            </span>
+
             {isConnected ? (
               <span className="flex items-center gap-1 font-semibold text-status-safe">
-                <SafeStatusIcon size={14} /> Connected ({patient.caregiverName})
+                <SafeStatusIcon size={14} />
+
+                {t('connected')} ({patient.caregiverName})
               </span>
             ) : (
               <span className="flex items-center gap-1 font-semibold text-status-warn">
-                <WarnStatusIcon size={14} /> Not Connected
+                <WarnStatusIcon size={14} />
+
+                {t('disconnected')}
               </span>
             )}
           </div>
@@ -63,16 +107,21 @@ export const Header: React.FC = () => {
 
         {/* Right Controls */}
         <div className="flex items-center gap-2">
+
+          {/* Language */}
           <LanguageSelector className="hidden sm:inline-flex" />
+
+          {/* Theme */}
           <ThemeToggle />
 
-          {/* Role Switcher Demo Badge */}
+          {/* Role Switcher */}
           <button
             onClick={switchRole}
             className="px-2.5 py-1 text-xs font-semibold rounded-full bg-accent-primary/10 text-accent-primary border border-accent-primary/20 hover:bg-accent-primary/20 transition-colors cursor-pointer"
-            title="Click to toggle between Patient and Caregiver role for demo"
+            title={t('role')}
+            aria-label={t('role')}
           >
-            Role: {userRole === 'patient' ? 'Patient 👤' : 'Caregiver 👨‍⚕️'}
+            {t('role')}: {getRoleText()}
           </button>
 
           {/* Notification Bell */}
@@ -80,16 +129,22 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setShowNotifs(!showNotifs)}
               className="p-2.5 rounded-full border border-hairline bg-surface text-primary hover:bg-sunken transition-colors relative flex items-center justify-center cursor-pointer"
-              aria-label="Notifications"
+              aria-label={t('notifications')}
+              title={t('notifications')}
             >
               <BellIcon size={20} />
+
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-status-danger text-white text-[10px] font-bold flex items-center justify-center border-2 border-surface">
                   {unreadCount}
                 </span>
               )}
             </button>
-            <NotificationPanel isOpen={showNotifs} onClose={() => setShowNotifs(false)} />
+
+            <NotificationPanel
+              isOpen={showNotifs}
+              onClose={() => setShowNotifs(false)}
+            />
           </div>
         </div>
       </div>

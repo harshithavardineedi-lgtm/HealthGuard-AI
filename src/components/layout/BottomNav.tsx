@@ -1,14 +1,43 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { MedicineIcon, CaregiverIcon, VoiceIcon, SettingsIcon, HeartIcon } from '../common/Icons';
+import {
+  MedicineIcon,
+  CaregiverIcon,
+  VoiceIcon,
+  SettingsIcon,
+  HeartIcon,
+} from '../common/Icons';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const BottomNav: React.FC = () => {
+  const { t } = useLanguage();
+
   const navItems = [
-    { to: '/patient', label: 'Home', icon: HeartIcon },
-    { to: '/patient/medicines', label: 'Medicines', icon: MedicineIcon },
-    { to: '/patient/assistant', label: 'Assistant', icon: VoiceIcon },
-    { to: '/patient/caregiver', label: 'Caregiver', icon: CaregiverIcon },
-    { to: '/patient/profile', label: 'Profile', icon: SettingsIcon },
+    {
+      to: '/patient',
+      label: t('dashboard'),
+      icon: HeartIcon,
+    },
+    {
+      to: '/patient/medicines',
+      label: t('medicines'),
+      icon: MedicineIcon,
+    },
+    {
+      to: '/patient/assistant',
+      label: t('voiceAssistant'),
+      icon: VoiceIcon,
+    },
+    {
+      to: '/patient/caregiver',
+      label: t('caregiver'),
+      icon: CaregiverIcon,
+    },
+    {
+      to: '/patient/profile',
+      label: t('profile'),
+      icon: SettingsIcon,
+    },
   ];
 
   return (
@@ -16,6 +45,7 @@ export const BottomNav: React.FC = () => {
       <div className="flex items-center justify-around max-w-lg mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
+
           return (
             <NavLink
               key={item.to}
@@ -30,7 +60,10 @@ export const BottomNav: React.FC = () => {
               }
             >
               <Icon size={22} />
-              <span className="text-[11px] leading-none">{item.label}</span>
+
+              <span className="text-[11px] leading-none">
+                {item.label}
+              </span>
             </NavLink>
           );
         })}
