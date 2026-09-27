@@ -65,10 +65,10 @@ export const AnalyticsPage: React.FC = () => {
             <p className="text-secondary text-sm mt-1">{t('quantitativeHealthTrackingFor')} {patient.name}.</p>
           </div>
 
-          {/* Full Width Chart Bento Layout (Section 3.6 & 28) */}
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          {/* Full-width chart sequence */}
+          <div className="space-y-8">
             {/* Adherence Donut Chart */}
-            <div className="xl:col-span-1 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs flex flex-col justify-between">
+            <section className="border-t border-hairline pt-6 flex flex-col justify-between">
               <h3 className="font-heading font-bold text-lg text-primary mb-2">{t('doseStatusDistribution')}</h3>
               <p className="text-xs text-secondary mb-4">{t('completedVsMissedDosesToday')}</p>
 
@@ -102,10 +102,10 @@ export const AnalyticsPage: React.FC = () => {
                 <span className="text-status-warn">● {t('skippedCountLabel')} {skipped}</span>
                 <span className="text-muted">● {t('pendingCountLabel')} {pending}</span>
               </div>
-            </div>
+            </section>
 
             {/* Weekly Medicine Activity Bar Chart */}
-            <div className="xl:col-span-2 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs">
+            <section className="border-t border-hairline pt-6">
               <h3 className="font-heading font-bold text-lg text-primary mb-2">{t('weeklyMedicineActivity')}</h3>
               <p className="text-xs text-secondary mb-4">{t('dailyTakenSkippedComparison')}</p>
 
@@ -120,11 +120,11 @@ export const AnalyticsPage: React.FC = () => {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-            </div>
+            </section>
           </div>
 
           {/* Full Width Hydration Line Chart */}
-          <div className="bg-surface border border-hairline rounded-[24px] p-6 shadow-xs">
+          <section className="border-t border-hairline pt-6">
             <h3 className="font-heading font-bold text-lg text-primary mb-2">{t('sevenDayHydrationTrend')}</h3>
             <p className="text-xs text-secondary mb-4">{t('dailyWaterAgainstTarget')}</p>
 
@@ -145,7 +145,7 @@ export const AnalyticsPage: React.FC = () => {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </div>
+          </section>
         </main>
       </div>
       <BottomNav />

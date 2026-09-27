@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHealth } from '../../context/HealthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Header } from '../../components/layout/Header';
+import { SidebarNav } from '../../components/layout/SidebarNav';
 import { BottomNav } from '../../components/layout/BottomNav';
 import { Button } from '../../components/common/Button';
 import { Modal } from '../../components/common/Modal';
@@ -334,7 +335,11 @@ export const MedicinesPage: React.FC = () => {
   // =====================================================
 
   return (
-    <div className="min-h-screen bg-canvas text-primary pb-28 lg:pb-12">
+    <div className="min-h-screen bg-canvas text-primary pb-28 lg:pb-12 flex">
+
+      <SidebarNav />
+
+      <div className="flex-1 flex flex-col min-w-0">
 
       <Header />
 
@@ -370,16 +375,16 @@ export const MedicinesPage: React.FC = () => {
         </div>
 
         {/* =================================================
-            MEDICINE CARDS
+              MEDICATION SCHEDULE
         ================================================= */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border-t border-hairline">
 
           {medicines.map((med) => (
 
             <div
               key={med.id}
-              className="bg-surface border border-hairline rounded-[24px] p-5 flex flex-col justify-between"
+                className="py-5 border-b border-hairline flex flex-col justify-between"
             >
 
               <div>
@@ -824,6 +829,7 @@ export const MedicinesPage: React.FC = () => {
 
       <BottomNav />
 
+      </div>
     </div>
   );
 };

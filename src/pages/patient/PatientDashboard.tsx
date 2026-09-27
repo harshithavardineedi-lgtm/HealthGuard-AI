@@ -2,6 +2,7 @@ import React from 'react';
 import { useHealth } from '../../context/HealthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Header } from '../../components/layout/Header';
+import { SidebarNav } from '../../components/layout/SidebarNav';
 import { BottomNav } from '../../components/layout/BottomNav';
 import { NextMedicineCard } from '../../components/patient/NextMedicineCard';
 import { WaterTrackerCard } from '../../components/patient/WaterTrackerCard';
@@ -135,12 +136,16 @@ export const PatientDashboard: React.FC = () => {
   ).length;
 
   return (
-    <div className="min-h-screen bg-canvas text-primary pb-28 lg:pb-12">
+    <div className="min-h-screen bg-canvas text-primary pb-28 lg:pb-12 flex">
+
+      <SidebarNav />
+
+      <div className="flex-1 flex flex-col min-w-0">
 
       {/* Header */}
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 py-6">
+      <main className="max-w-4xl mx-auto px-4 py-6 w-full">
 
         {/* System Status */}
         <div className="mb-4 text-xs font-semibold px-4 py-2 rounded-2xl bg-status-warn/10 border border-status-warn/30 text-status-warn flex items-center justify-between gap-3">
@@ -153,11 +158,11 @@ export const PatientDashboard: React.FC = () => {
           </span>
         </div>
 
-        {/* Main Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {/* Main care flow */}
+        <div className="space-y-5">
 
           {/* Next Medicine */}
-          <div className="lg:col-span-2">
+          <div>
             {nextMedLog ? (
               <NextMedicineCard log={nextMedLog} />
             ) : (
@@ -179,7 +184,7 @@ export const PatientDashboard: React.FC = () => {
           </div>
 
           {/* Water Tracker */}
-          <div className="lg:col-span-1">
+          <div>
             <WaterTrackerCard />
           </div>
         </div>
@@ -190,10 +195,10 @@ export const PatientDashboard: React.FC = () => {
         </div>
 
         {/* Schedule + Caregiver */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
+        <div className="space-y-8 mt-8">
 
           {/* Today's Schedule */}
-          <div className="lg:col-span-2 bg-surface border border-hairline rounded-[24px] p-5 shadow-xs">
+          <section className="border-t border-hairline pt-6">
 
             <div className="flex items-center justify-between mb-4">
 
@@ -214,12 +219,12 @@ export const PatientDashboard: React.FC = () => {
             </div>
 
             {/* Schedule List */}
-            <div className="space-y-3">
+            <div className="space-y-0">
 
               {todayLogs.map((log) => (
                 <div
                   key={log.id}
-                  className="p-4 rounded-2xl bg-sunken border border-hairline flex items-center justify-between gap-4"
+                  className="py-4 border-b border-hairline flex items-center justify-between gap-4"
                 >
 
                   {/* Medicine Information */}
@@ -278,10 +283,10 @@ export const PatientDashboard: React.FC = () => {
 
             </div>
 
-          </div>
+          </section>
 
           {/* Caregiver Connection */}
-          <div className="lg:col-span-1 bg-surface border border-hairline rounded-[24px] p-5 flex flex-col justify-between">
+          <section className="border-t border-hairline pt-6 flex flex-col justify-between">
 
             <div>
 
@@ -300,7 +305,7 @@ export const PatientDashboard: React.FC = () => {
 
               {patient.caregiverId ? (
 
-                <div className="p-4 rounded-2xl bg-sunken border border-hairline space-y-2">
+                <div className="py-3 space-y-2">
 
                   <div className="flex items-center gap-3">
 
@@ -334,7 +339,7 @@ export const PatientDashboard: React.FC = () => {
 
               ) : (
 
-                <div className="p-4 rounded-2xl bg-status-warn/10 border border-status-warn/30 text-xs text-primary space-y-2">
+                <div className="py-3 text-xs text-primary space-y-2">
 
                   <p className="font-medium text-status-warn flex items-center gap-1">
 
@@ -373,7 +378,7 @@ export const PatientDashboard: React.FC = () => {
 
             </div>
 
-          </div>
+          </section>
 
         </div>
 
@@ -391,6 +396,7 @@ export const PatientDashboard: React.FC = () => {
       {/* Mobile Navigation */}
       <BottomNav />
 
+      </div>
     </div>
   );
 };

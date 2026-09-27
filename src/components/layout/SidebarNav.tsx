@@ -7,43 +7,31 @@ import {
   SettingsIcon,
   CalendarIcon,
   HeartIcon,
+  MedicineIcon,
 } from '../common/Icons';
+import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 export const SidebarNav: React.FC = () => {
   const { t } = useLanguage();
+  const { userRole } = useAuth();
 
-  const navItems = [
-    {
-      to: '/caregiver',
-      label: t('dashboard'),
-      icon: HeartIcon,
-    },
-    {
-      to: '/caregiver/patients',
-      label: t('patients'),
-      icon: CaregiverIcon,
-    },
-    {
-      to: '/caregiver/alerts',
-      label: t('alertsSos'),
-      icon: SOSIcon,
-    },
-    {
-      to: '/caregiver/messages',
-      label: t('messages'),
-      icon: VoiceIcon,
-    },
-    {
-      to: '/caregiver/analytics',
-      label: t('careAnalytics'),
-      icon: CalendarIcon,
-    },
-    {
-      to: '/settings',
-      label: t('settings'),
-      icon: SettingsIcon,
-    },
-  ];
+  const navItems = userRole === 'patient'
+    ? [
+        { to: '/patient', label: t('dashboard'), icon: HeartIcon },
+        { to: '/patient/medicines', label: t('medicines'), icon: MedicineIcon },
+        { to: '/patient/emergency-info', label: t('alerts'), icon: SOSIcon },
+        { to: '/patient/chat', label: t('messages'), icon: VoiceIcon },
+        { to: '/patient/profile', label: t('profile'), icon: CaregiverIcon },
+        { to: '/settings', label: t('settings'), icon: SettingsIcon },
+      ]
+    : [
+        { to: '/caregiver', label: t('dashboard'), icon: HeartIcon },
+        { to: '/caregiver/patients', label: t('patients'), icon: CaregiverIcon },
+        { to: '/caregiver/alerts', label: t('alertsSos'), icon: SOSIcon },
+        { to: '/caregiver/messages', label: t('messages'), icon: VoiceIcon },
+        { to: '/caregiver/analytics', label: t('careAnalytics'), icon: CalendarIcon },
+        { to: '/settings', label: t('settings'), icon: SettingsIcon },
+      ];
 
   return (
     <aside className="w-64 bg-surface border-r border-hairline flex flex-col justify-between min-h-screen p-5 hidden lg:flex flex-shrink-0">
@@ -60,7 +48,7 @@ export const SidebarNav: React.FC = () => {
             </h1>
 
             <span className="text-[10px] uppercase font-bold tracking-wider text-accent-secondary bg-accent-secondary/10 px-2 py-0.5 rounded-full">
-              {t('caregiver')} {t('portal')}
+              {userRole === 'patient' ? t('patient') : t('caregiver')} {t('portal')}
             </span>
           </div>
         </div>

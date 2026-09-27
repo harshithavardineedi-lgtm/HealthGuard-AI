@@ -246,7 +246,7 @@ export const CaregiverDashboard: React.FC = () => {
 
         <Header />
 
-        <main className="max-w-7xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-6">
+        <main className="max-w-4xl mx-auto px-4 py-6 pb-28 lg:pb-8 w-full space-y-8">
 
           {/* =================================================
               ACTIVE EMERGENCY ALERT
@@ -356,13 +356,13 @@ export const CaregiverDashboard: React.FC = () => {
               PATIENT OVERVIEW
           ================================================= */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="space-y-6">
 
             {/* =================================================
                 PATIENT CARD
             ================================================= */}
 
-            <div className="lg:col-span-2 bg-surface border border-hairline rounded-[24px] p-6 shadow-xs">
+            <section className="border-t border-hairline pt-6">
 
               <div className="flex items-start justify-between mb-4">
 
@@ -426,11 +426,11 @@ export const CaregiverDashboard: React.FC = () => {
                   QUICK METRICS
               ================================================= */}
 
-              <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-sunken border border-hairline text-center text-xs">
+              <div className="border-t border-hairline text-xs">
 
                 {/* Adherence */}
 
-                <div>
+                <div className="flex items-center justify-between py-3 border-b border-hairline">
 
                   <span className="text-muted block mb-0.5">
                     {t('adherenceRate')}
@@ -444,7 +444,7 @@ export const CaregiverDashboard: React.FC = () => {
 
                 {/* Hydration */}
 
-                <div>
+                <div className="flex items-center justify-between py-3 border-b border-hairline">
 
                   <span className="text-muted block mb-0.5">
                     {t('hydrationGoal')}
@@ -459,7 +459,7 @@ export const CaregiverDashboard: React.FC = () => {
 
                 {/* Last Activity */}
 
-                <div>
+                <div className="flex items-center justify-between py-3 border-b border-hairline">
 
                   <span className="text-muted block mb-0.5">
                     {t('lastActivity')}
@@ -473,17 +473,17 @@ export const CaregiverDashboard: React.FC = () => {
 
               </div>
 
-            </div>
+            </section>
 
             {/* =================================================
                 STAT GRID
             ================================================= */}
 
-            <div className="lg:col-span-1 grid grid-cols-2 gap-3">
+            <div className="border-t border-hairline">
 
               {/* Doses Taken */}
 
-              <div className="p-4 rounded-[20px] bg-surface border border-hairline flex flex-col justify-between">
+              <div className="py-4 border-b border-hairline flex items-center justify-between gap-4">
 
                 <MedicineIcon
                   size={22}
@@ -506,7 +506,7 @@ export const CaregiverDashboard: React.FC = () => {
 
               {/* Water Log */}
 
-              <div className="p-4 rounded-[20px] bg-surface border border-hairline flex flex-col justify-between">
+              <div className="py-4 border-b border-hairline flex items-center justify-between gap-4">
 
                 <WaterIcon
                   size={22}
@@ -530,7 +530,7 @@ export const CaregiverDashboard: React.FC = () => {
 
               {/* Missed Doses */}
 
-              <div className="p-4 rounded-[20px] bg-surface border border-hairline flex flex-col justify-between">
+              <div className="py-4 border-b border-hairline flex items-center justify-between gap-4">
 
                 <WarnStatusIcon
                   size={22}
@@ -553,7 +553,7 @@ export const CaregiverDashboard: React.FC = () => {
 
               {/* SOS Alerts */}
 
-              <div className="p-4 rounded-[20px] bg-surface border border-hairline flex flex-col justify-between">
+              <div className="py-4 border-b border-hairline flex items-center justify-between gap-4">
 
                 <SOSIcon
                   size={22}
@@ -582,13 +582,13 @@ export const CaregiverDashboard: React.FC = () => {
               MISSED DOSES + GEOLOCATION
           ================================================= */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="space-y-6">
 
             {/* =================================================
                 MISSED DOSES
             ================================================= */}
 
-            <div className="bg-surface border border-hairline rounded-[24px] p-5">
+            <section className="border-t border-hairline pt-6">
 
               <h3 className="font-heading font-bold text-lg text-primary mb-3 flex items-center gap-2">
 
@@ -661,13 +661,13 @@ export const CaregiverDashboard: React.FC = () => {
                 ))
               )}
 
-            </div>
+            </section>
 
             {/* =================================================
                 PATIENT GEOLOCATION
             ================================================= */}
 
-            <div className="bg-surface border border-hairline rounded-[24px] p-5">
+            <section className="border-t border-hairline pt-6">
 
               <h3 className="font-heading font-bold text-lg text-primary mb-3 flex items-center gap-2">
 
@@ -729,7 +729,7 @@ export const CaregiverDashboard: React.FC = () => {
 
               </div>
 
-            </div>
+            </section>
 
           </div>
 
