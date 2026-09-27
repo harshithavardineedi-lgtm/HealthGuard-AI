@@ -1,0 +1,137 @@
+/* HealthGuard AI Design System Tokens */
+
+:root {
+  /* Light Theme Tokens */
+  --bg-canvas: #FAF6F0;       /* warm ivory */
+  --bg-surface: #FFFFFF;      /* surface cards */
+  --bg-sunken: #F1EBE0;       /* input fields & recessed areas */
+  --ink-primary: #1F2A24;     /* warm near-black */
+  --ink-secondary: #5C6B62;
+  --ink-muted: #97A399;
+  --accent-primary: #2C7A6B;  /* deep teal */
+  --accent-secondary: #C4622D;/* warm terracotta */
+  --status-safe: #4C8C4A;    /* banyan-leaf green */
+  --status-warn: #D98E2B;    /* marigold amber */
+  --status-danger: #C13B2C;  /* brick red */
+  --border-hairline: #E4DCCE;
+
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --radius-btn: 16px;
+  --radius-card: 20px;
+  --radius-modal: 24px;
+}
+
+.dark {
+  /* Dark Theme Tokens */
+  --bg-canvas: #14201C;       /* deep forest-teal */
+  --bg-surface: #1C2B26;
+  --bg-sunken: #0F1815;
+  --ink-primary: #F2EDE3;
+  --ink-secondary: #B9C4BC;
+  --ink-muted: #7B8A81;
+  --accent-primary: #4FB3A1;  /* lighter teal for dark contrast */
+  --accent-secondary: #E08349;
+  --status-safe: #6BB86A;
+  --status-warn: #E8A947;
+  --status-danger: #E0574A;
+  --border-hairline: #2E3F38;
+}
+
+/* Accessibility Mode Overrides */
+.accessibility-mode {
+  font-size: 112.5%; /* Increase text size */
+}
+.accessibility-mode * {
+  letter-spacing: 0.015em;
+}
+.accessibility-mode button, 
+.accessibility-mode a {
+  min-height: 48px;
+}
+.accessibility-mode .disable-ambient-motion {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Global Styles */
+html, body {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  transition: background-color 200ms ease, color 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-serif);
+}
+
+/* Custom Utilities for CSS variable bindings */
+.bg-canvas { background-color: var(--bg-canvas); }
+.bg-surface { background-color: var(--bg-surface); }
+.bg-sunken { background-color: var(--bg-sunken); }
+
+.text-primary { color: var(--ink-primary); }
+.text-secondary { color: var(--ink-secondary); }
+.text-muted { color: var(--ink-muted); }
+.text-accent-primary { color: var(--accent-primary); }
+.text-accent-secondary { color: var(--accent-secondary); }
+.text-status-safe { color: var(--status-safe); }
+.text-status-warn { color: var(--status-warn); }
+.text-status-danger { color: var(--status-danger); }
+
+.bg-accent-primary { background-color: var(--accent-primary); }
+.bg-accent-secondary { background-color: var(--accent-secondary); }
+.bg-status-safe { background-color: var(--status-safe); }
+.bg-status-warn { background-color: var(--status-warn); }
+.bg-status-danger { background-color: var(--status-danger); }
+
+.border-hairline { border-color: var(--border-hairline); }
+
+/* The single radial gradient behind SOS button */
+.sos-radial-glow {
+  background: radial-gradient(circle, var(--accent-primary) 0%, rgba(44, 122, 107, 0) 70%);
+  opacity: 0.08;
+}
+
+/* Shimmer Loading Animation for Skeletons */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-sunken) 25%,
+    var(--bg-surface) 50%,
+    var(--bg-sunken) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+/* Flash pulse for emergency alert on caregiver dashboard */
+@keyframes flash-pulse {
+  0%, 100% { border-color: var(--status-danger); box-shadow: 0 0 0 0 rgba(224, 87, 74, 0.4); }
+  50% { border-color: var(--status-danger); box-shadow: 0 0 0 10px rgba(224, 87, 74, 0); }
+}
+
+.emergency-flash {
+  animation: flash-pulse 1.2s ease-in-out 2;
+}
+
+/* 3D preserve transform */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
